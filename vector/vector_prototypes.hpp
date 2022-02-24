@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <memory>
+#include "../xutility.hpp"
 
 namespace ft
 {
@@ -63,7 +64,6 @@ namespace ft
 			================================
 			*/
 			// TODO: doesn't have type 'Ptrit' (it's need to do iterators)
-			/*
 			typedef Ptrit<value_type, difference_type,
 				Tptr, reference, Tptr, reference> iterator;
 			typedef Ptrit<value_type, difference_type,
@@ -72,7 +72,6 @@ namespace ft
 			typedef std::reverse_iterator<iterator> reverse_iterator;
 			// TODO: Replace here and in vector.hpp
 			typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-			*/
 
 			/**
 			================================
@@ -93,12 +92,10 @@ namespace ft
 			vector(It F, It L, const A &Al);
 
 			// TODO: doesn't have type 'Ptrit' (it's need to do iterators)
-			/*
 			template <class It>
 			void Construct(It F, It L, Int_iterator_tag);
 			template <class It>
 			void Construct(It F, It L, input_iterator_tag);
-			*/
 
 			~vector();
 
@@ -114,7 +111,6 @@ namespace ft
 			size_type capacity() const;
 
 			// TODO: doesn't have type 'Ptrit' (it's need to do iterators)
-			/*
 			iterator begin();
 			const_iterator begin() const;
 			iterator end();
@@ -123,7 +119,6 @@ namespace ft
 			const_reverse_iterator rbegin() const;
 			reverse_iterator rend();
 			const_reverse_iterator rend() const;
-			*/
 
 			void resize(size_type N);
 			void resize(size_type N, T X);
@@ -146,15 +141,12 @@ namespace ft
 			template <class It>
 			void assign(It F, It L);
 			// TODO: doesn't have type 'Ptrit' (it's need to do iterators)
-			/*
 			template <class It>
 			void Assign(It F, It L, Int_iterator_tag);
 			template <class It>
 			void Assign(It F, It L, input_iterator_tag);
-			 */
 			void assign(size_type N, const T &X);
 			// TODO: doesn't have type 'Ptrit' (it's need to do iterators)
-			/*
 			iterator insert(iterator P, const T &X);
 			void insert(iterator P, size_type M, const T &X);
 			template <class It>
@@ -168,7 +160,6 @@ namespace ft
 
 			iterator erase(iterator P);
 			iterator erase(iterator F, iterator L);
-			*/
 			void clear();
 
 			//TODO vector ?==? Myt
