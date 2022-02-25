@@ -2,6 +2,13 @@
 #define XUTILITY
 
 #include <cstddef> // it's for type 'ptrdiff_t'
+#include "utility.hpp"
+
+# define F_NONE		"\033[37m"
+# define GREEN		"\033[32m"
+
+
+// TODO: add Val_cat and Dist_type
 
 namespace ft
 {
@@ -442,10 +449,15 @@ namespace ft
 				return (Myt(current - N));
 			}
 
-			Myt &operator-=(D N) const
+			Myt &operator-=(D N)
 			{
 				current += N;
 				return (*this);
+			}
+
+			Myt operator+(D N) const
+			{
+				return (Myt(current - N));
 			}
 
 			Myt operator-(D N) const
@@ -455,7 +467,7 @@ namespace ft
 
 			Rt operator[](D N) const
 			{
-				return (*(this + N));
+				return (*(*this + N));
 			}
 
 			bool Lt(const Myt &Y) const
@@ -632,7 +644,6 @@ namespace ft
 	}
 
 	// TODO: it's need to make a pair<Iter, Iter> type
-	/*
 	template <class InIt1, class InIt2> inline
 	pair<InIt1, InIt2> mismatch(InIt1 F, InIt1 L, InIt2 X)
 	{
@@ -648,12 +659,47 @@ namespace ft
 			;
 		return (pair<InIt1, InIt2>(F, X));
 	}
-	*/
+
 	template <class T> inline
 	void swap(T &X, T &Y)
 	{
 		T tmp = X;
 		X = Y, Y = tmp;
+	}
+
+	template <class InIt, class D> inline
+	void advance (InIt& I, D N)
+	{
+		Advance(I, N, Iter_cat(I));
+	}
+
+	template <class InIt, class D> inline
+	void Advance (InIt &I, D N, input_iterator_tag)
+	{
+		for (; 0 < N; --N)
+			++I;
+	}
+
+	template <class FwdIt, class D> inline
+	void Advance (FwdIt &I, D N, forward_iterator_tag)
+	{
+		for (; 0 < N; --N)
+			++I;
+	}
+
+	template <class BidIt, class D> inline
+	void Advance (BidIt &I, D N, bidirectional_iterator_tag)
+	{
+		for (; 0 < N; --N)
+			++I;
+		for (; N < 0; ++N)
+			--I;
+	}
+
+	template <class RanIt, class D> inline
+	void Advance (RanIt &I, D N, random_access_iterator_tag)
+	{
+		I += N;
 	}
 }
 
