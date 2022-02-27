@@ -1,5 +1,5 @@
 #include <iostream>
-#include "xmemory.hpp"
+#include "../xmemory.hpp"
 
 static size_t cnt;
 
@@ -50,13 +50,12 @@ void test_alloc()
 	Myal al0 = get_al();
 	Myal al(al0);
 
-	//Myal::allocator<void>::pointer *pv_ptr = (void **)0;
-	//Myal::allocator<void>::const_pointer *pv_cptr = (const void **)0;
-	//std::allocator<void>::const_pointer *pv_cptr = (const void **)0;
+	Myal::allocator<void>::pointer *pv_ptr = (void **)0;
+	Myal::allocator<void>::const_pointer *pv_cptr = (const void **)0;
 	Myal::rebind<int>::other::pointer *pv_iptr = (int **)0;
 
-	//ft::allocator<void> alv0,alv(alv0);
-	//alv = alv0;
+	ft::allocator<void> alv0,alv(alv0);
+	alv = alv0;
 
 	float *pf1 = al0.address(f1);
 	assert(pf1 == &f1);
@@ -70,10 +69,9 @@ void test_alloc()
 	al.deallocate(pf1,1);
 
 	assert(0 < al0.max_size());
-	//assert(al0 == al);
-	//assert()
-	al0.destroy(pf1);
-	//al0.deallocate(pf1,1);
+	assert(al0 == al);
+//	al0.deallocate(pf1,1);
+//	al0.destroy(pf1);
 }
 
 int main()
