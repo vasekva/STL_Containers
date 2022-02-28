@@ -2,12 +2,12 @@
 #define COLLECTIONS_STACK_TEMPLATE_HPP
 
 
-#include "deque"
-//#include "../vector/vector.hpp"
+//#include "deque"
+#include "../vector/vector.hpp"
 
 namespace ft
 {
-	template <class Type, class Container = std::deque<Type> >
+	template <class Type, class Container = ft::vector<Type> >
 	class stack
 	{
 		public:
@@ -21,6 +21,7 @@ namespace ft
 			//TODO: make a destructor
 			stack();
 			explicit stack(const container_type &cont);
+			~stack();
 			bool				empty() const;
 			size_type			size() const;
 			reference 			top();

@@ -13,6 +13,10 @@ namespace ft
 		: container(Cont)
 	{}
 
+	template <class Type_stack, class Container_stack>
+	stack<Type_stack, Container_stack>::~stack()
+	{}
+
 	template <class Type, class Container>
 	bool stack<Type, Container>::empty() const
 	{
