@@ -137,11 +137,11 @@ namespace ft
 			typedef typename allocator_type::template
 				rebind<value_type>::other::const_reference		const_reference;
 
-/**
-=================================
-==        Class Iterator       ==
-=================================
-*/
+		/**
+		=================================
+		==        Class Iterator       ==
+		=================================
+		*/
 		class iterator;
 		friend class iterator;
 		class iterator : public Bidit<value_type, Dift, Tptr, Reft>
@@ -197,6 +197,71 @@ namespace ft
 			protected:
 				Nodeptr Ptr;
 		};
+
+		/**
+		=================================
+		==    Class Const_Iterator     ==
+		=================================
+		*/
+		class const_iterator;
+		friend class const_iterator;
+		class const_iterator : public Bidit<value_type, Dift, Ctptr, const_reference>
+		{
+			public:
+				typedef Bidit<value_type, Dift, Ctptr, const_reference> MyBase;
+				typedef typename MyBase::iterator_category	iterator_category;
+				typedef typename MyBase::value_type			value_type;
+				typedef typename MyBase::difference_type	difference_type;
+				const_iterator() : Ptr(0) {}
+				const_iterator(Nodeptr P) : Ptr(P) {}
+				const_iterator(const typename Tree<Tr>::iterator X)
+					: Ptr(X.Mynode()) {}
+				const_reference operator*() const { return (Value(Ptr)); }
+				Ctptr operator->() const { return (&**this); }
+				const_iterator &operator++() { Inc(); return (*this); }
+				const_iterator &operator--() { Dec(); return (*this); }
+				const_iterator operator++(int) { const_iterator tmp = *this; ++*this; return (tmp); }
+				const_iterator operator--(int) { const_iterator tmp = *this; --*this; return (tmp); }
+				bool operator==(const const_iterator &X) const { return (Ptr == X.Ptr); }
+				bool operator!=(const const_iterator &X) const { return (!(*this == X)); }
+				void Dec()
+				{
+					if (Isnil(Ptr))
+						Ptr = Right(Ptr);
+					else if (!Isnil(Left(Ptr)))
+						Ptr = Max(Left(Ptr));
+					else
+					{
+						Nodeptr P;
+						while (!Isnil(P = Parent(Ptr)) && Ptr == Left(P))
+							Ptr = P;
+						if (!Isnil(P))
+							Ptr = P;
+					}
+				}
+				void Inc()
+				{
+					if (Isnil(Ptr))
+						;
+					else if (!Isnil(Right(Ptr)))
+						Ptr = Min(Right(Ptr));
+					else
+					{
+						Nodeptr P;
+						while (!Isnil(P = Parent(Ptr)) && Ptr == Right(P))
+							Ptr = P;
+						Ptr = P;
+					}
+				}
+				Nodeptr MyNode() const
+				{
+					return (Ptr);
+				}
+			protected:
+				Nodeptr Ptr;
+		};
+
+
 	};
 	//page 523
 }
