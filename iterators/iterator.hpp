@@ -9,6 +9,7 @@
 # include "iter_advance.hpp"
 # include "iter_distance.hpp"
 # include "random_access_iterator.hpp"
+# include "reverse_bid_iterator.hpp"
 # include "reverse_iterator.hpp"
 
 namespace ft

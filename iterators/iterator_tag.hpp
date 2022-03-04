@@ -27,6 +27,9 @@ namespace ft
 
 	template <class RanIt>
 	class reverse_iterator;
+
+	template <class BidIt>
+	class reverse_bid_iterator;
 }
 
 #endif

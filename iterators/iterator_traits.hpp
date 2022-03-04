@@ -22,7 +22,7 @@ namespace ft
 		typedef T 							value_type;
 		typedef ptrdiff_t 					difference_type;
 		typedef T 							*pointer;
-		typedef T& 							reference;
+		typedef T                           &reference;
 	};
 
 	template<class T>
@@ -32,7 +32,7 @@ namespace ft
 		typedef T 							value_type;
 		typedef ptrdiff_t 					difference_type;
 		typedef T 							*pointer;
-		typedef T& 							reference;
+		typedef T                           &reference;
 	};
 }
 

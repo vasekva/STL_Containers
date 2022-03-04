@@ -45,43 +45,43 @@ namespace ft
 	};
 
 	template <class RanIt, class RanIt1> inline
-	typename reverse_iterator<RanIt>::D operator - (const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	typename reverse_iterator<RanIt>::D operator-(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (Y.base() - X.base());
 	}
 
 	template <class RanIt, class RanIt1> inline
-	bool operator==(const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	bool operator==(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (X.base() == Y.base());
 	}
 
 	template <class RanIt, class RanIt1> inline
-	bool operator!=(const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	bool operator!=(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (!(X ==Y));
 	}
 
 	template <class RanIt, class RanIt1> inline
-	bool operator<(const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	bool operator<(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (Y.base() < X.base());
 	}
 
 	template <class RanIt, class RanIt1> inline
-	bool operator>(const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	bool operator>(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (Y < X);
 	}
 
 	template <class RanIt, class RanIt1> inline
-	bool operator<=(const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	bool operator<=(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (!(Y < X));
 	}
 
 	template <class RanIt, class RanIt1> inline
-	bool operator>=(const reverse_iterator<RanIt>& X, const reverse_iterator<RanIt1>& Y)
+	bool operator>=(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (!(X < Y));
 	}
