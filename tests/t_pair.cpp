@@ -1,6 +1,6 @@
 #include <iostream>
 #include <assert.h>
-#include "../pair.hpp"
+#include "../utility/pair.hpp"
 
 using namespace std;
 

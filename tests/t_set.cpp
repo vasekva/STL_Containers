@@ -13,7 +13,7 @@ void test_set()
 	typedef allocator<char> Myal;
 	typedef less<char> Mypred;
 	typedef ft::set<char, Mypred, Myal> Mycont;
-	char ch, carr[] = "abc", carr2[] = "def";
+	char ch, str1[] = "abc", carr2[] = "def";
 
 	Mycont::key_type        *p_key = (char *)0;
 	Mycont::key_compare     *p_komp = (Mypred *)0;
@@ -31,12 +31,12 @@ void test_set()
     Myal al = v0.get_allocator();
 	Mypred pred;
 	Mycont v0a(pred), v0b(pred, al);
-//
-//	assert(v0.empty() && v0.size() == 0);
-//	assert(v0a.size() == 0 && v0a.get_allocator() == al);
-//	assert(v0b.size() == 0 && v0b.get_allocator() == al);
-//
-//	Mycont v1(carr, carr + 3);
+
+	assert(v0.empty() && v0.size() == 0);
+	assert(v0a.size() == 0 && v0a.get_allocator() == al);
+	assert(v0b.size() == 0 && v0b.get_allocator() == al);
+
+	Mycont v1(str1, str1 + 3);
 //	assert(v1.size() == 3 && *v1.begin() == 'a');
 
 //	Mycont v2(carr, carr + 3, pred);
