@@ -29,7 +29,7 @@ namespace ft
 //		init();
 //		Copy(X);
 //	}
-//
+
 	template <class Tree_traits>
 	Tree<Tree_traits>::~Tree()
 	{

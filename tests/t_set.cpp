@@ -28,9 +28,9 @@ void test_set()
 	Mycont::difference_type *p_diff = (ptrdiff_t *)0;
 
     Mycont v0;
-//    Myal al = v0.get_allocator();
-//	Mypred pred;
-//	Mycont v0a(pred), v0b(pred, al);
+    Myal al = v0.get_allocator();
+	Mypred pred;
+	Mycont v0a(pred), v0b(pred, al);
 //
 //	assert(v0.empty() && v0.size() == 0);
 //	assert(v0a.size() == 0 && v0a.get_allocator() == al);

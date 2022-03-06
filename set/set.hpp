@@ -37,23 +37,23 @@ namespace ft
 	template <class K,
 		class Pr = std::less<K>,
 		class A = std::allocator<K> >
-	class set : Tree<Tset_traits<K, Pr, A, false> >
+	class set : public Tree<Tset_traits<K, Pr, A, false> >
 	{
 		private:
-			typedef Tree<Tset_traits<K, Pr, A, false> >	_base;
+			typedef Tree<Tset_traits<K, Pr, A, false> >	Mybase;
 			typedef set<K, Pr, A>						container_type;
 		public:
 			typedef K	key_type;
 			typedef Pr	key_compare;
-			typedef typename _base::value_compare	value_compare;
-			typedef typename _base::allocator_type	allocator_type;
-			typedef typename _base::size_type		size_type;
-			typedef typename _base::value_type		value_type;
-			typedef typename _base::difference_type	difference_type;
-			typedef typename _base::pointer			pointer;
-			typedef typename _base::const_pointer	const_pointer;
-			typedef typename _base::reference		reference;
-			typedef typename _base::const_reference	const_reference;
+			typedef typename Mybase::value_compare		value_compare;
+			typedef typename Mybase::allocator_type		allocator_type;
+			typedef typename Mybase::size_type			size_type;
+			typedef typename Mybase::value_type			value_type;
+			typedef typename Mybase::difference_type	difference_type;
+			typedef typename Mybase::pointer			pointer;
+			typedef typename Mybase::const_pointer		const_pointer;
+			typedef typename Mybase::reference			reference;
+			typedef typename Mybase::const_reference	const_reference;
 //
 //			typedef typename _base::iterator		iterator;
 //			typedef typename _base::const_iterator	const_iterator;
@@ -61,9 +61,18 @@ namespace ft
 //			typedef typename _base::const_reverse_iterator	reverse_iterator;
 //			typedef typename _base::const_reverse_iterator	const_reverse_iterator;
 
-			set() : _base(key_compare(), allocator_type()) {}
-
+			set();
+			explicit set(const key_compare &Pred);
+			set(const key_compare &Pred, const allocator_type &Al);
+			template <class It>
+			set(It F, It L);
+			template <class It>
+			set(It F, It L, const key_compare &Pred);
+			template <class It>
+			set(It F, It L, const key_compare &Pred, const allocator_type &Al);
 	};
 }
+
+#include "set_constructors.hpp"
 
 #endif

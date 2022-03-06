@@ -293,7 +293,7 @@ namespace ft
 //			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 			typedef pair<iterator, bool>					PairIterBool;
 			typedef pair<iterator, iterator>				PairIterIter;
-//			typedef pair<const_iterator, const_iterator>	PairConstIter;
+			typedef pair<const_iterator, const_iterator>	PairConstIter;
 
 		/**
 		=================================
@@ -301,11 +301,15 @@ namespace ft
 		=================================
 		*/
 		public:
-			iterator erase(iterator P);
-			iterator erase(iterator First, iterator Last);
-			size_type erase(const key_type &X);
-			void erase(const key_type *First, const key_type *Last);
+			iterator		erase(iterator P);
+			iterator		erase(iterator First, iterator Last);
+			size_type		erase(const key_type &X);
+			void			erase(const key_type *First, const key_type *Last);
 
+			PairIterBool	insert(const value_type &value);
+			iterator		insert(iterator P, const value_type &value);
+			template <class It>
+			void			insert(It F, It L);
 
 //			~Tree();
 
@@ -324,10 +328,7 @@ namespace ft
 			allocator_type get_allocator() const;
 //			key_compare key_comp() const;
 //			value_compare value_comp() const;
-//			PairIterBool insert(const value_type &value);
-//			iterator insert(iterator P, const value_type &value);
-//			template <class It>
-//			void insert(It F, It L);
+
 //			void clear();
 //			iterator find(const key_type &Kv);
 //			const_iterator find(const key_type &Kv) const;

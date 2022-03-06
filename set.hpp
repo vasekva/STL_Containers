@@ -68,7 +68,6 @@ namespace ft
 			template <class It>
 			Set(It F, It L, const key_compare Pred) : MyBase(Pred, allocator_type())
 			{
-				// TODO: insert(*F);
 				for (; F != L; ++F)
 					this->insert(*F);
 			}
