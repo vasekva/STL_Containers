@@ -156,7 +156,6 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::erase(iterator First, iterator Last)
 	{
-		std::cout << "ERASE FUUUUUCK" << std::endl;
 		if (size() == 0 || First != begin() || Last != end())
 		{
 			while (First != Last)

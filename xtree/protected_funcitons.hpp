@@ -9,8 +9,11 @@ namespace ft
 	void Tree<Tree_traits>::Init()
 	{
 		std::cout << "ok" << std::endl;
-		// TODO: need to finish this function
 		Head = Buynode(0, Black);
+		Isnil(Head) = true;
+		Root() = Head;
+		Lmost() = Head, Rmost() = Head;
+		Size = 0;
 	}
 
 	template <class Tree_traits>
@@ -18,9 +21,13 @@ namespace ft
 	{
 		std::cout << "ok" << std::endl;
 		Nodeptr S = this->Alnod.allocate(1, (void *)0);
-		Left(S);
-		// TODO: need to finish this line
-//		this->Alptr.construct(&Left(S), 0);
+		// TODO: second construct parameters were equal 0
+		this->Alptr.construct(&Left(S), nullptr);
+		this->Alptr.construct(&Right(S), nullptr);
+		this->Alptr.construct(&Parent(S), Parg);
+		Color(S) = Carg;
+		Isnil(S) = false;
+		return (S);
 	}
 
 	template <class Tree_traits>
