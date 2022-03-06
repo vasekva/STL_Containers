@@ -19,6 +19,18 @@ namespace ft
 	}
 
 	template <class Tree_traits>
+	typename Tree<Tree_traits>::size_type Tree<Tree_traits>::max_size() const
+	{
+		return (this->Alval.max_size());
+	}
+
+	template <class Tree_traits>
+	bool  Tree<Tree_traits>::empty() const
+	{
+		return (size() == 0);
+	}
+
+	template <class Tree_traits>
 	void Tree<Tree_traits>::swap(Tree<Tree_traits> &X)
 	{
 		if (get_allocator() == X.get_allocator())

@@ -42,7 +42,7 @@ namespace ft
 					ReCount(P);
 			}
 
-			nodeptr GetNode() const
+			nodeptr Mynode() const
 			{
 				return (this->End);
 			}
@@ -55,7 +55,7 @@ namespace ft
 				return (&**this);
 			}
 
-			bool		operator==(const iterator_tree X) const { return (GetNode() == X.GetNode()); }
+			bool		operator==(const iterator_tree X) const { return (Mynode() == X.Mynode()); }
 //			bool		operator==(const iterator_tree X) const { return (Ptr == X.Ptr); }
 			bool		operator!=(const iterator_tree X) const { return (!(*this == X)); }
 
@@ -100,7 +100,7 @@ namespace ft
 			nodeptr Parent(const nodeptr& node){
 				return ((nodeptr)(node->Parent));
 			}
-			
+
 			void Inc() {
 				if (this->Last->Right != this->End) {
 					ReCount((nodeptr)(this->End->Right));
@@ -140,13 +140,16 @@ namespace ft
 					this->Ptr = P;
 				}
 			}
-			// Пересчет указателей			
+			// Пересчет указателей
 			void ReCount (nodeptr NValue) {
-					
-					this->End = NValue;
+
+				this->End = NValue;
 					// NIL в левом указателе ссылается на самого себя
-					while (this->End != this->End->Left)
+					//TODO: ERROR IS HERE!!!!!
+					while (this->End != this->End->Left) {
+						std::cout << "FUUUUUUCK" << std::endl;
 						this->End = Left(this->End);
+					}
 					this->Last = Right(this->End);
 					this->Begin = Right(this->End);
 					while (Left(this->Begin) != this->End)

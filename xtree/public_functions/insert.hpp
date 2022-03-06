@@ -14,21 +14,23 @@ namespace ft
 		while (!Isnil(X))
 		{
 			Y = X;
-			AddLeft = Tree_traits::comp(Tree_traits::Kfn()(V), Key(X));
+			AddLeft = Tree_traits::comp(Tree_traits::GetKey(V), Key(X));
 			X = AddLeft ? Left(X) : Right(X);
 		}
 		if (Tree_traits::Multi)
 			return (PairIterBool(Insert(AddLeft, Y, V), true));
 		else
 		{
-			iterator P = iterator(Y);
+			iterator P = iterator(Y); //  TODO: <-- there's an error!!!!
 			if (!AddLeft)
 				;
 			else if (P == begin())
+			{
 				return (PairIterBool(Insert(true, Y, V), true));
+			}
 			else
 				--P;
-			if (Tree_traits::comp(Key(P.Mynode()), Tree_traits::Kfn()(V)))
+			if (Tree_traits::comp(Key(P.Mynode()), Tree_traits::GetKey(V)))
 				return (PairIterBool(Insert(AddLeft, Y, V), true));
 			else
 				return (PairIterBool(P, false));

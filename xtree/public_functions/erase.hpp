@@ -9,10 +9,10 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::erase(iterator P)
 	{
-		if (Isnil(P.GetNode()))
+		if (Isnil(P.Mynode()))
 			throw std::out_of_range("map/set<T> iterator");
 		Nodeptr X, XPar;
-		Nodeptr Y = (P++).GetNode();
+		Nodeptr Y = (P++).Mynode();
 		Nodeptr Z = Y;
 		if (Isnil(Left(Y)))
 			X = Right(Y);

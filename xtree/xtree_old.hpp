@@ -119,8 +119,7 @@ namespace ft
 
 			static Charref	Color(Nodeptr P)	{ return ((Charref)(*P).Color); }
 			static Charref	Isnil(Nodeptr P) 	{ return ((Charref)(*P).Isnil); }
-//			static Keyref	Key(Nodeptr P)		{ return (Tr::Kfn()(Value(P))); }
-//			static Keyref	Key(Nodeptr P)		{ return (Tr::GetKey(Value(P))); }
+			static Keyref	Key(Nodeptr P)		{ return (Tr::Kfn()(Value(P))); }
 			static Nodepref Left(Nodeptr P)		{ return ((Nodepref)(*P).Left); }
 			static Nodepref Parent(Nodeptr P)	{ return ((Nodepref)(*P).Parent); }
 			static Nodepref Right(Nodeptr P)	{ return ((Nodepref)(*P).Right); }

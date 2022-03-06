@@ -8,14 +8,14 @@
 namespace ft
 {
 
-	template <class tree_traits>
-	class iterator_pointers;
+//	template <class tree_traits>
+//	class iterator_pointers;
 
-	template <class tree_traits>
-	class iterator_tree;
+//	template <class tree_traits>
+//	class iterator_tree;
 
-	template <class tree_traits>
-	class const_iterator_tree;
+//	template <class tree_traits>
+//	class const_iterator_tree;
 
 /**
 =================================
@@ -128,8 +128,8 @@ namespace ft
 			typedef Reft	reference;
 			typedef typename allocator_type::template
 			rebind<value_type>::other::const_reference		const_reference;
-			typedef iterator_tree<Tree_traits>				iterator;
-			typedef const_iterator_tree<Tree_traits>		const_iterator;
+//			typedef iterator_tree<Tree_traits>				iterator;
+//			typedef const_iterator_tree<Tree_traits>		const_iterator;
 
 			explicit Tree(const key_compare &Parg, const allocator_type &Al);
 			Tree(const value_type *First, const value_type *Last,
@@ -143,8 +143,8 @@ namespace ft
 //			enum Redbl { Red, Black };
 			typedef typename allocator_type::template
 				rebind<Nodeptr>::other::reference			Nodepref;
-//			typedef typename allocator_type::template
-//			rebind<key_type>::other::const_reference	Keyref;
+			typedef typename allocator_type::template
+				rebind<key_type>::other::const_reference	Keyref;
 			typedef typename allocator_type::template
 				rebind<char>::other::reference				Charref;
 			typedef typename allocator_type::template
@@ -152,7 +152,7 @@ namespace ft
 
 			static Charref	Color(Nodeptr P);
 			static Charref	Isnil(Nodeptr P);
-//			static Keyref	Key(NodePtr P);
+			static Keyref	Key(Nodeptr P);
 			static Nodepref Left(Nodeptr P);
 			static Nodepref Right(Nodeptr P);
 			static Nodepref Parent(Nodeptr P);
@@ -165,9 +165,10 @@ namespace ft
 			=================================
 			*/
 
-			class iterator_tree;
-			friend class iterator_tree;
-			/*
+//			class iterator_tree;
+//			friend class iterator_tree;
+			class iterator;
+			friend class iterator;
 			class iterator : public Bidit<value_type, Dift, Tptr, Reft>
 			{
 				public:
@@ -182,8 +183,9 @@ namespace ft
 					Tptr		operator->() const { return (&**this); }
 					// TODO: check output value
 					iterator	&operator++() { Inc(); return (*this); }
-					iterator	&operator-() { Dec(); return (*this); }
+					iterator	&operator--() { Dec(); return (*this); }
 					iterator	operator--(int) { iterator tmp = *this; --*this; return (tmp); }
+					iterator	operator++(int) { iterator tmp = *this; ++*this; return (tmp); }
 					iterator	operator*(int) { iterator tmp = *this; ++*this; return (tmp); }
 					bool		operator==(const iterator X) const { return (Ptr == X.Ptr); }
 					bool		operator!=(const iterator X) const { return (!(*this == X)); }
@@ -222,16 +224,16 @@ namespace ft
 				protected:
 					Nodeptr Ptr;
 			};
-			*/
 
 			/**
 			=================================
 			==    Class Const_Iterator     ==
 			=================================
 			*/
-			class const_iterator_tree;
-			friend class const_iterator_tree;
-			/*
+//			class const_iterator_tree;
+//			friend class const_iterator_tree;
+			class const_iterator;
+			friend class const_iterator;
 			class const_iterator : public Bidit<value_type, Dift, Ctptr, const_reference>
 			{
 				public:
@@ -287,7 +289,6 @@ namespace ft
 				protected:
 					Nodeptr Ptr;
 			};
-			*/
 
 //			typedef ft::reverse_iterator<iterator>			reverse_iterator;
 //			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
@@ -323,8 +324,8 @@ namespace ft
 //			reverse_iterator rend();
 //			const_reverse_iterator rend() const;
 			size_type size() const;
-//			size_type max_size() const;
-//			bool empty() const;
+			size_type max_size() const;
+			bool empty() const;
 			allocator_type get_allocator() const;
 //			key_compare key_comp() const;
 //			value_compare value_comp() const;
@@ -354,10 +355,11 @@ namespace ft
 			void Destval(Tptr P);
 			void Lrotate(Nodeptr X);
 			void Rrotate(Nodeptr X);
+			iterator Insert(bool Addleft, Nodeptr Y, const value_type &V);
+			void Consval(Tptr P, const value_type &V);
 
 //			void Copy(const Myt &X);
 //			Nodeptr Copy(Nodeptr X, Nodeptr P);
-//			iterator Insert(bool Addleft, Nodeptr Y, const value_type &V);
 //			Nodeptr Lbound(const key_type &Kv) const;
 //			TODO: maybe Nodeptr *???
 //				Nodeptr &Lmost() const {}
@@ -368,7 +370,6 @@ namespace ft
 			//TODO: maybe Nodeptr *???
 	//			Nodeptr &Root() const;
 //			Nodeptr Ubound(const key_type &Kv) const;
-//			void Consval(Tptr P, const value_type &V);
 
 			Nodeptr		Head;
 			size_type	Size;
@@ -429,9 +430,9 @@ namespace ft
 	}
 }
 
-#include "iterator_pointers.hpp"
-#include "iterator_tree.hpp"
-#include "const_iterator_tree.hpp"
+//#include "iterator_pointers.hpp"
+//#include "iterator_tree.hpp"
+//#include "const_iterator_tree.hpp"
 
 #include "xtree_constructors.hpp"
 #include "protected_funcitons.hpp"

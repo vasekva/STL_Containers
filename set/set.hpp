@@ -26,7 +26,8 @@ namespace ft
 
 			typedef key_compare	value_compare;
 
-			key_type GetKey(const value_type &V) const
+//			key_type GetKey(const value_type &V) const
+			static key_type GetKey(const value_type &V)
 			{
 				return (V);
 			}

@@ -8,7 +8,6 @@ namespace ft
 	template <class Tree_traits>
 	void Tree<Tree_traits>::Init()
 	{
-		std::cout << "ok" << std::endl;
 		Head = Buynode(0, Black);
 		Isnil(Head) = true;
 		Root() = Head;
@@ -17,9 +16,93 @@ namespace ft
 	}
 
 	template <class Tree_traits>
+	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::Insert(bool Addleft, Nodeptr Y, const value_type &V)
+	{
+		if (max_size() - 1 <= Size)
+			throw std::length_error("map/set<T> too long");
+		Nodeptr Z = Buynode(Y, Red);
+		Left(Z) = Head, Right(Z) = Head;
+		try
+		{
+			Consval(&Value(Z), V);
+		}
+		catch (...)
+		{
+			Freenode(Z);
+			throw;
+		}
+		++Size;
+		if (Y == Head)
+		{
+			Root() = Z;
+			Lmost() = Z, Rmost() = Z;
+		}
+		else if (Addleft)
+		{
+			Left(Y) = Z;
+			if (Y == Lmost())
+				Lmost() = Z;
+		}
+		else
+		{
+			Right(Y) = Z;
+			if (Y == Rmost())
+				Rmost() = Z;
+		}
+		for (Nodeptr X = Z; Color(Parent(X)) == Red; )
+		{
+			if (Parent(X) == Left(Parent(Parent(X))))
+			{
+				Y = Right(Parent(Parent(X)));
+				if (Color(Y) == Red)
+				{
+					Color(Parent(X)) = Black;
+					Color(Y) = Black;
+					Color(Parent(Parent(X))) = Red;
+					X = Parent(Parent(X));
+				}
+				else
+				{
+					if (X == Right(Parent(X)))
+					{
+						X = Parent(X);
+						Lrotate(X);
+					}
+					Color(Parent(X)) = Black;
+					Color(Parent(Parent(X))) = Red;
+					Rrotate(Parent(Parent(X)));
+				}
+			}
+			else
+			{
+				Y = Left(Parent(Parent(X)));
+				if (Color(Y) == Red)
+				{
+					Color(Parent(X)) = Black;
+					Color(Y) = Black;
+					Color(Parent(Parent(X))) = Red;
+					X = Parent(Parent(X));
+				}
+				else
+				{
+					if (X == Left(Parent(X)))
+					{
+						X = Parent(X);
+						Rrotate(X);
+					}
+					Color(Parent(X)) = Black;
+					Color(Parent(Parent(X))) = Red;
+					Lrotate(Parent(Parent(X)));
+				}
+			}
+			Color(Root()) = Black;
+			return (iterator(Z));
+		}
+	}
+
+	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodeptr Tree<Tree_traits>::Buynode(Nodeptr Parg, char Carg)
 	{
-		std::cout << "ok" << std::endl;
 		Nodeptr S = this->Alnod.allocate(1, (void *)0);
 		// TODO: second construct parameters were equal 0
 		this->Alptr.construct(&Left(S), nullptr);
@@ -37,21 +120,25 @@ namespace ft
 		this->Alptr.destroy(&Right(S));
 		this->Alptr.destroy(&Left(S));
 		this->Alnod.deallocate(S, 1);
-		std::cout << "Freenode ok" << std::endl;
 	}
 
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Charref Tree<Tree_traits>::Isnil(Nodeptr P)
 	{
-		std::cout << "Isnil ok" << std::endl;
 		// returns Genptr Node.Left
 		return ((Charref)(*P).Isnil);
 	}
 
 	template <class Tree_traits>
+	typename Tree<Tree_traits>::Keyref Tree<Tree_traits>::Key(Nodeptr P)
+	{
+		return (Tree_traits::GetKey(Value(P)));
+	}
+
+
+	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodepref Tree<Tree_traits>::Left(Nodeptr P)
 	{
-		std::cout << "Left ok" << std::endl;
 		// returns Genptr Node.Left
 		return ((Nodepref)(*P).Left);
 	}
@@ -59,7 +146,6 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodepref Tree<Tree_traits>::Right(Nodeptr P)
 	{
-		std::cout << "Right ok" << std::endl;
 		// returns Genptr Node.Left
 		return ((Nodepref)(*P).Right);
 	}
@@ -67,7 +153,6 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodepref Tree<Tree_traits>::Parent(Nodeptr P)
 	{
-		std::cout << "Parent ok" << std::endl;
 		// returns Genptr Node.Left
 		return ((Nodepref)(*P).Parent);
 	}
@@ -84,6 +169,11 @@ namespace ft
 		return ((Charref)(*P).Color);
 	}
 
+	template <class Tree_traits>
+	void Tree<Tree_traits>::Consval(Tptr P, const value_type &V)
+	{
+		this->Alval.construct(P, V);
+	}
 
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodeptr Tree<Tree_traits>::Max(Nodeptr P)

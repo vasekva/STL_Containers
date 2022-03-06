@@ -33,7 +33,7 @@ namespace ft
 		: Mybase(key_compare(), allocator_type())
 	{
 		for (; F != L; ++F)
-		insert(*F);
+			this->insert(*F);
 	}
 
 	template <class K, class Pr, class A>
@@ -42,7 +42,7 @@ namespace ft
 		: Mybase(Pred, allocator_type())
 	{
 		for (; F != L; ++F)
-			insert(*F);
+			this->insert(*F);
 	}
 
 	template <class K, class Pr, class A>
@@ -51,7 +51,7 @@ namespace ft
 		: Mybase(Pred, Al)
 	{
 		for (; F != L; ++F)
-			insert(*F);
+			this->insert(*F);
 	}
 }
 
