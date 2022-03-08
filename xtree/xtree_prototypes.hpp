@@ -137,6 +137,17 @@ namespace ft
 			Tree(const Myt &X);
 			~Tree();
 
+			Myt &operator=(const Myt &X)
+			{
+				if (this != &X)
+				{
+					erase(begin(), end());
+					Tree_traits::comp = X.comp;
+					Copy(X);
+				}
+				return (*this);
+			}
+
 	protected:
 			enum NodeColors {Red, Black};
 //			typedef typename Tree_node<Tr>::Genptr	Genptr;
@@ -349,7 +360,10 @@ namespace ft
 			static Nodeptr Max(Nodeptr P);
 			static Nodeptr Min(Nodeptr P);
 			Nodeptr &Lmost();
+			Nodeptr &Lmost() const;
+			Nodeptr &Rmost() const;
 			Nodeptr &Rmost();
+			Nodeptr &Root() const;
 			Nodeptr &Root();
 			void Erase(Nodeptr X);
 			void Destval(Tptr P);
@@ -358,17 +372,9 @@ namespace ft
 			iterator Insert(bool Addleft, Nodeptr Y, const value_type &V);
 			void Consval(Tptr P, const value_type &V);
 
-//			void Copy(const Myt &X);
-//			Nodeptr Copy(Nodeptr X, Nodeptr P);
+			void Copy(const Myt &X);
+			Nodeptr Copy(Nodeptr X, Nodeptr P);
 //			Nodeptr Lbound(const key_type &Kv) const;
-//			TODO: maybe Nodeptr *???
-//				Nodeptr &Lmost() const {}
-
-//			TODO: maybe Nodeptr *???
-	//			Nodeptr &Rmost() const;
-//			Nodeptr &Root() const;
-			//TODO: maybe Nodeptr *???
-	//			Nodeptr &Root() const;
 //			Nodeptr Ubound(const key_type &Kv) const;
 
 			Nodeptr		Head;

@@ -48,7 +48,21 @@ void test_set()
 //
 	const Mycont v4(str1, str1 + 3);
 	v0 = v4;
-//	assert(v0.size() == 3 && *v0.begin() == 'a');
+	assert(v0.size() == 3 && *v0.begin() == 'a');
+
+//	Mycont::iterator p_it(v1.begin());
+//	Mycont::const_iterator p_cit(v4.begin());
+//	Mycont::reverse_iterator p_rit(v1.begin());
+//	Mycont::const_reverse_iterator p_crit(v4.begin());
+//
+//	assert(*p_it == 'a' && *--(p_it = v1.end()) == 'c');
+//	assert(*p_cit == 'a' && *--(p_cit = v4.end()) == 'c');
+//	assert(*p_rit == 'c' && *--(p_rit = v1.rend()) == 'a');
+//	assert(*p_crit == 'c' && *--(p_crit = v1.rend()) == 'a');
+
+
+
+
 	cout << GREEN"SUCCESS" << NORM << endl;
 
 }

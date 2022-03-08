@@ -716,7 +716,7 @@ namespace ft
 			{
 				Root() = Copy(X.Root(), Head);
 				Size = X.size();
-				if (!Isnil(Tr::Root))
+				if (!Isnil(Root()))
 				{
 					Lmost() = Min(Root());
 					Rmost() = Max(Root());
@@ -737,7 +737,7 @@ namespace ft
 					}
 					catch (...)
 					{
-						FreeNode(Y);
+						Freenode(Y);
 						Erase(R);
 						throw;
 					}

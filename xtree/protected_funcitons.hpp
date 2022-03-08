@@ -6,6 +6,54 @@
 namespace ft
 {
 	template <class Tree_traits>
+	void Tree<Tree_traits>::Copy(const Myt &X)
+	{
+		Root() = Copy(X.Root(), Head);
+		Size = X.size();
+		if (!Isnil(Root()))
+		{
+			Lmost() = Min(Root());
+			Rmost() = Max(Root());
+		}
+		else
+			Lmost() = Head, Rmost() = Head;
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::Nodeptr Tree<Tree_traits>::Copy(Nodeptr X, Nodeptr P)
+	{
+		Nodeptr R = Head;
+		if (!Isnil(X))
+		{
+			Nodeptr Y = Buynode(P, Color(X));
+			try
+			{
+				Consval(&Value(Y), Value(X));
+			}
+			catch (...)
+			{
+				Freenode(Y);
+				Erase(R);
+				throw;
+			}
+			Left(Y) = Head, Right(Y) = Head;
+			if (Isnil(R))
+				R = Y;
+			try
+			{
+				Left(Y) = Copy(Left(X), Y);
+				Right(Y) = Copy(Right(X), Y);
+			}
+			catch (...)
+			{
+				Erase(R);
+				throw;
+			}
+		}
+		return (R);
+	}
+
+	template <class Tree_traits>
 	void Tree<Tree_traits>::Init()
 	{
 		Head = Buynode(0, Black);
@@ -200,9 +248,27 @@ namespace ft
 	}
 
 	template <class Tree_traits>
+	typename Tree<Tree_traits>::Nodeptr &Tree<Tree_traits>::Lmost() const
+	{
+		return (Left(Head));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::Nodeptr &Tree<Tree_traits>::Rmost() const
+	{
+		return (Right(Head));
+	}
+
+	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodeptr &Tree<Tree_traits>::Rmost()
 	{
 		return (Right(Head));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::Nodeptr &Tree<Tree_traits>::Root() const
+	{
+		return (Parent(Head));
 	}
 
 	template <class Tree_traits>
