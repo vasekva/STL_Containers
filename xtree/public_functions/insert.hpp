@@ -44,27 +44,28 @@ namespace ft
 			return (Insert(true, Head, V));
 		else if (P == begin())
 		{
-			if (comp(Tree_traits::Kfn()(V), Key(P.Mynode())))
+			if (Tree_traits::comp(Tree_traits::GetKey(V), Key(P.Mynode())))
 				return (Insert(true, P.Mynode(), V));
 		}
 		else if (P == end())
 		{
-			if (comp(Key(Rmost()), Tree_traits::Kfn()(V)))
+			if (Tree_traits::comp(Key(Rmost()), Tree_traits::GetKey(V)))
 				return (Insert(false, Rmost(), V));
 		}
 		else
 		{
 			iterator Pb = P;
-			if (comp(Key((--Pb) - Tree_traits::Mynode()),
-					 Tree_traits::Kfn()(V)) && comp(Tree_traits::Kfn()(V), Key(P.Mynode())))
+			//TODO: might be error! comp(Key((--Pb) - Mynode()
+			if (Tree_traits::comp(Key((--Pb).Mynode()),
+					 Tree_traits::GetKey(V)) && Tree_traits::comp(Tree_traits::GetKey(V), Key(P.Mynode())))
 			{
 				if (Isnil(Right(Pb.Mynode())))
 					return (Insert(false, Pb.Mynode(), V));
 				else
 					return (Insert(true, P.Mynode(), V));
 			}
-			return (insert(V).first);
 		}
+		return (insert(V).first);
 	}
 
 	template <class Tree_traits>

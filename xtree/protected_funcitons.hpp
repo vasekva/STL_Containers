@@ -145,8 +145,8 @@ namespace ft
 					Lrotate(Parent(Parent(X)));
 				}
 			}
-			Color(Root()) = Black;
 		}
+		Color(Root()) = Black;
 		return (iterator(Z));
 	}
 
@@ -242,6 +242,21 @@ namespace ft
 	}
 
 	template <class Tree_traits>
+	typename Tree<Tree_traits>::Nodeptr Tree<Tree_traits>::Lbound(const key_type &Kv) const
+	{
+		Nodeptr X = Root();
+		Nodeptr Y = Head;
+		while (!(Isnil(X)))
+		{
+			if (Tree_traits::comp(Key(X), Kv))
+				X = Right(X);
+			else
+				Y = X, X = Left(X);
+		}
+		return (Y);
+	}
+
+	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodeptr &Tree<Tree_traits>::Lmost()
 	{
 		return (Left(Head));
@@ -329,6 +344,20 @@ namespace ft
 			Left(Parent(X)) = Y;
 		Right(Y) = X;
 		Parent(X) = Y;
+	}
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::Nodeptr Tree<Tree_traits>::Ubound(const key_type &Kv) const
+	{
+		Nodeptr X = Root();
+		Nodeptr Y = Head;
+		while (!Isnil(X))
+		{
+			if (Tree_traits::comp(Kv, Key(X)))
+				Y = X, X = Left(X);
+			else
+				X = Right(X);
+		}
+		return (Y);
 	}
 }
 

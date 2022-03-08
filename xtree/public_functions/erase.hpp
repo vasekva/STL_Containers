@@ -25,7 +25,6 @@ namespace ft
 			XPar = Parent(Z);
 			if (!Isnil(X))
 				Parent(X) = XPar;
-
 			if (Root() == Z)
 				Root() = X;
 			else if (Left(XPar) == Z)

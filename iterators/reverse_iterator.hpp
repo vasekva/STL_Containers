@@ -25,7 +25,7 @@ namespace ft
 
 			template <class U>
 			reverse_iterator(const reverse_iterator<U> &x)
-				: current(x.base) {}
+				: current(x.base()) {}
 
 			RanIt base() const { return (current); }
 			Ref operator*() const { RanIt tmp = current; return (*--tmp); }

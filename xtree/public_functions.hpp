@@ -44,6 +44,48 @@ namespace ft
 			Tree<Tree_traits> tmp = *this; *this = X, X = tmp;
 		}
 	}
+
+	template <class Tree_traits>
+	void Tree<Tree_traits>::clear()
+	{
+		erase(begin(), end());
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::lower_bound(const key_type &Kv)
+	{
+		return (iterator(Lbound(Kv)));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::const_iterator Tree<Tree_traits>::lower_bound(const key_type &Kv) const
+	{
+		return (const_iterator(Lbound(Kv)));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::upper_bound(const key_type &Kv)
+	{
+		return (iterator(Ubound(Kv)));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::const_iterator Tree<Tree_traits>::upper_bound(const key_type &Kv) const
+	{
+		return (iterator(Ubound(Kv)));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::PairIterIter Tree<Tree_traits>::equal_range(const key_type &Kv)
+	{
+		return (PairIterIter(lower_bound(Kv), upper_bound(Kv)));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::PairConstIter Tree<Tree_traits>::equal_range(const key_type &Kv) const
+	{
+		return (PairConstIter(lower_bound(Kv), upper_bound(Kv)));
+	}
 }
 
 #include "public_functions/insert.hpp"

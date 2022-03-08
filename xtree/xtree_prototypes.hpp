@@ -131,6 +131,10 @@ namespace ft
 //			typedef iterator_tree<Tree_traits>				iterator;
 //			typedef const_iterator_tree<Tree_traits>		const_iterator;
 
+
+
+
+
 			explicit Tree(const key_compare &Parg, const allocator_type &Al);
 			Tree(const value_type *First, const value_type *Last,
 				 const key_compare &Parg, const allocator_type &Al);
@@ -293,7 +297,7 @@ namespace ft
 							Ptr = P;
 						}
 					}
-					Nodeptr MyNode() const
+					Nodeptr Mynode() const
 					{
 						return (Ptr);
 					}
@@ -301,8 +305,8 @@ namespace ft
 					Nodeptr Ptr;
 			};
 
-//			typedef ft::reverse_iterator<iterator>			reverse_iterator;
-//			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
+			typedef ft::reverse_iterator<iterator>			reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 			typedef pair<iterator, bool>					PairIterBool;
 			typedef pair<iterator, iterator>				PairIterIter;
 			typedef pair<const_iterator, const_iterator>	PairConstIter;
@@ -325,15 +329,16 @@ namespace ft
 
 //			~Tree();
 
+			//TODO: move the implementation to a separate file
 //			Myt &operator=(const Myt &X);
 			iterator begin();
 			const_iterator begin() const;
 			iterator end();
 			const_iterator end() const;
-//			reverse_iterator rbegin();
-//			const_reverse_iterator rbegin() const;
-//			reverse_iterator rend();
-//			const_reverse_iterator rend() const;
+			reverse_iterator rbegin();
+			const_reverse_iterator rbegin() const;
+			reverse_iterator rend();
+			const_reverse_iterator rend() const;
 			size_type size() const;
 			size_type max_size() const;
 			bool empty() const;
@@ -341,16 +346,16 @@ namespace ft
 //			key_compare key_comp() const;
 //			value_compare value_comp() const;
 
-//			void clear();
+			void clear();
 //			iterator find(const key_type &Kv);
 //			const_iterator find(const key_type &Kv) const;
 //			size_type count(const key_type &Kv) const;
-//			iterator lower_bound(const key_type &Kv);
-//			const_iterator lower_bound(const key_type &Kv) const;
-//			iterator upper_bound(const key_type &Kv);
-//			const_iterator upper_bound(const key_type &Kv) const;
-//			PairIterIter equal_range(const key_type &Kv);
-//			PairConstIter equal_range(const key_type &Kv) const;
+			iterator lower_bound(const key_type &Kv);
+			const_iterator lower_bound(const key_type &Kv) const;
+			iterator upper_bound(const key_type &Kv);
+			const_iterator upper_bound(const key_type &Kv) const;
+			PairIterIter equal_range(const key_type &Kv);
+			PairConstIter equal_range(const key_type &Kv) const;
 			void swap(Myt &X);
 
 		protected:
@@ -374,8 +379,8 @@ namespace ft
 
 			void Copy(const Myt &X);
 			Nodeptr Copy(Nodeptr X, Nodeptr P);
-//			Nodeptr Lbound(const key_type &Kv) const;
-//			Nodeptr Ubound(const key_type &Kv) const;
+			Nodeptr Lbound(const key_type &Kv) const;
+			Nodeptr Ubound(const key_type &Kv) const;
 
 			Nodeptr		Head;
 			size_type	Size;

@@ -66,11 +66,11 @@ namespace ft
 			typedef typename Mybase::reference			reference;
 			typedef typename Mybase::const_reference	const_reference;
 //
-//			typedef typename _base::iterator		iterator;
-//			typedef typename _base::const_iterator	const_iterator;
-//
-//			typedef typename _base::const_reverse_iterator	reverse_iterator;
-//			typedef typename _base::const_reverse_iterator	const_reverse_iterator;
+			typedef typename Mybase::iterator		iterator;
+			typedef typename Mybase::const_iterator	const_iterator;
+
+			typedef typename Mybase::const_reverse_iterator	reverse_iterator;
+			typedef typename Mybase::const_reverse_iterator	const_reverse_iterator;
 
 			set();
 			explicit set(const key_compare &Pred);
