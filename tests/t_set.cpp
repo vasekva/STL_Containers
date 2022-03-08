@@ -4,6 +4,7 @@
 //#include "../set.hpp"
 #include "../set/set.hpp"
 #include "../iterators/iterator.hpp"
+#include "../utility/colors.hpp"
 
 
 using namespace std;
@@ -37,17 +38,18 @@ void test_set()
 	assert(v0b.size() == 0 && v0b.get_allocator() == al);
 
 	Mycont v1(str1, str1 + 3);
-//	assert(v1.size() == 3 && *v1.begin() == 'a');
+	assert(v1.size() == 3 && *v1.begin() == 'a');
 
-//	Mycont v2(carr, carr + 3, pred);
-//	assert(v2.size() == 3 && *v2.begin() == 'a');
+	Mycont v2(str1, str1 + 3, pred);
+	assert(v2.size() == 3 && *v2.begin() == 'a');
+
+	Mycont v3(str1, str1 + 3, pred, al);
+	assert(v3.size() == 3 && *v3.begin() == 'a');
 //
-//	Mycont v3(carr, carr + 3, pred, al);
-//	assert(v3.size() == 3 && *v3.begin() == 'a');
-//
-//	const Mycont v4(carr, carr + 3);
-//	v0 = v4;
+	const Mycont v4(str1, str1 + 3);
+	v0 = v4;
 //	assert(v0.size() == 3 && *v0.begin() == 'a');
+	cout << GREEN"SUCCESS" << NORM << endl;
 
 }
 

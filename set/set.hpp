@@ -26,9 +26,19 @@ namespace ft
 
 			typedef key_compare	value_compare;
 
+//			struct Kfn
+//			{
+//				static key_type GetKey(const value_type &V)
+//				{
+////				static key_type Key = (key_type)V;
+//					return (V);
+//				}
+//
+//			};
 //			key_type GetKey(const value_type &V) const
-			static key_type GetKey(const value_type &V)
+			const static K &GetKey(const value_type &V)
 			{
+//				static key_type Key = (key_type)V;
 				return (V);
 			}
 

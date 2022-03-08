@@ -15,6 +15,8 @@ namespace ft
 		Size = 0;
 	}
 
+	//TODO: there might have an error because
+	// the book doesn't have brackets under 'for' cycle
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::Insert(bool Addleft, Nodeptr Y, const value_type &V)
 	{
@@ -96,8 +98,8 @@ namespace ft
 				}
 			}
 			Color(Root()) = Black;
-			return (iterator(Z));
 		}
+		return (iterator(Z));
 	}
 
 	template <class Tree_traits>

@@ -9,6 +9,7 @@
 # define YELLOW	    "\033[0;33m"
 # define BLUE		"\033[34m" 
 # define PURPLE     "\033[0;35m"
+# define NORM		"\033[0m"
 
 /* 
 ** Bold font  
