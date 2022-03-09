@@ -73,15 +73,24 @@ void test_set()
 	assert(*v0.erase(v0.begin(), ++v0.begin()) == 'c' && v0.size() == 4);
 	assert(v0.erase('x') == 0 && v0.erase('e') == 1);
 
-//	v0.clear();
-//	assert(v0.empty());
-//	v0.swap(v1);
-//	assert(!v0.empty() && v1.empty());
-//	swap(v0, v1);
-//	assert(v0.empty() && !v1.empty());
-//	assert(v1 == v1 && v0 < v1);
-//	assert(v0 != v1 && v1 > v0);
-//	assert(v0 <= v1 && v1 >= v0);
+	v0.clear();
+	assert(v0.empty());
+	v0.swap(v1);
+	assert(!v0.empty() && v1.empty());
+	ft::swap(v0, v1);
+	assert(v0.empty() && !v1.empty());
+	assert(v1 == v1 && v0 < v1);
+	assert(v0 != v1 && v1 > v0);
+	assert(v0 <= v1 && v1 >= v0);
+
+	assert(v0.key_comp()('a', 'c') && !v0.key_comp()('a', 'a'));
+	assert(v0.value_comp()('a', 'c') && !v0.value_comp()('a', 'a'));
+	assert(*v4.find('b') == 'b');
+	assert(v4.count('x') == 0 && v4.count('b') == 1);
+	assert(*v4.lower_bound('a') == 'a');
+	assert(*v4.upper_bound('a') == 'b');
+	ft::pair<Mycont::const_iterator, Mycont::const_iterator> pcc = v4.equal_range('a');
+	assert(*pcc.first == 'a' && *pcc.second == 'b');
 
 	cout << GREEN"SUCCESS" << NORM << endl;
 

@@ -4,6 +4,7 @@
 #include "../algorithm/lexicographical_compare.hpp"
 #include "../utility/pair.hpp"
 #include "../iterators/iterator.hpp"
+#include "../algorithm/algorithm.hpp"
 
 namespace ft
 {
@@ -328,8 +329,6 @@ namespace ft
 			template <class It>
 			void			insert(It F, It L);
 
-//			~Tree();
-
 			//TODO: move the implementation to a separate file
 //			Myt &operator=(const Myt &X);
 			iterator begin();
@@ -344,13 +343,13 @@ namespace ft
 			size_type max_size() const;
 			bool empty() const;
 			allocator_type get_allocator() const;
-//			key_compare key_comp() const;
-//			value_compare value_comp() const;
+			key_compare key_comp() const;
+			value_compare value_comp() const;
 
 			void clear();
-//			iterator find(const key_type &Kv);
-//			const_iterator find(const key_type &Kv) const;
-//			size_type count(const key_type &Kv) const;
+			iterator find(const key_type &Kv);
+			const_iterator find(const key_type &Kv) const;
+			size_type count(const key_type &Kv) const;
 			iterator lower_bound(const key_type &Kv);
 			const_iterator lower_bound(const key_type &Kv) const;
 			iterator upper_bound(const key_type &Kv);

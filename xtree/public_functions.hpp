@@ -52,6 +52,42 @@ namespace ft
 	}
 
 	template <class Tree_traits>
+	typename Tree<Tree_traits>::key_compare Tree<Tree_traits>::key_comp() const
+	{
+		return (Tree_traits::comp);
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::value_compare Tree<Tree_traits>::value_comp() const
+	{
+		return (value_compare(key_comp()));
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::find(const key_type &Kv)
+	{
+		iterator P = lower_bound(Kv);
+		return (P == end() || Tree_traits::comp(Kv, Key(P.Mynode())) ? end() : P);
+	}
+
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::const_iterator Tree<Tree_traits>::find(const key_type &Kv) const
+	{
+		const_iterator P = lower_bound(Kv);
+		return (P == end() || Tree_traits::comp(Kv, Key(P.Mynode())) ? end() : P);
+	}
+
+	//TODO: count always return 0
+	template <class Tree_traits>
+	typename Tree<Tree_traits>::size_type Tree<Tree_traits>::count(const key_type &Kv) const
+	{
+		PairConstIter Ans = equal_range(Kv);
+		size_type N = 0;
+		Distance(Ans.first, Ans.second, N);
+		return (N);
+	}
+
+	template <class Tree_traits>
 	typename Tree<Tree_traits>::iterator Tree<Tree_traits>::lower_bound(const key_type &Kv)
 	{
 		return (iterator(Lbound(Kv)));
