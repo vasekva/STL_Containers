@@ -201,7 +201,7 @@ namespace ft
 					iterator	&operator--() { Dec(); return (*this); }
 					iterator	operator--(int) { iterator tmp = *this; --*this; return (tmp); }
 					iterator	operator++(int) { iterator tmp = *this; ++*this; return (tmp); }
-					iterator	operator*(int) { iterator tmp = *this; ++*this; return (tmp); }
+//					iterator	operator*(int) { iterator tmp = *this; ++*this; return (tmp); }
 					bool		operator==(const iterator X) const { return (Ptr == X.Ptr); }
 					bool		operator!=(const iterator X) const { return (!(*this == X)); }
 					void Dec()
@@ -230,6 +230,7 @@ namespace ft
 							Nodeptr P;
 							while (!Isnil(P = Parent(Ptr)) && Ptr == Right(P))
 								Ptr = P;
+							Ptr = P;
 						}
 					}
 					Nodeptr Mynode() const

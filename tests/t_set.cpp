@@ -1,6 +1,7 @@
 
 #include <assert.h>
 #include <iostream>
+#include <vector>
 //#include "../set.hpp"
 #include "../set/set.hpp"
 #include "../iterators/iterator.hpp"
@@ -58,7 +59,6 @@ void test_set()
 
 	v0.clear();
 	ft::pair<Mycont::iterator, bool> pib = v0.insert('d');
-	cout << *v0.begin() << endl;
 	assert(*pib.first == 'd' && pib.second);
 	assert(*--v0.end() == 'd');
 	pib = v0.insert('d');
@@ -68,16 +68,20 @@ void test_set()
 	assert(v0.size() == 5 && *v0.begin() == 'a');
 	v0.insert(str2, str2 + 3);
 	assert(v0.size() == 6 && *--v0.end() == 'f');
-	cout << *--v0.end() << endl;
-	cout << *--v0.begin() << endl;
+	assert(*v0.erase(v0.begin()) == 'b');
+	assert(v0.size() == 5);
+	assert(*v0.erase(v0.begin(), ++v0.begin()) == 'c' && v0.size() == 4);
+	assert(v0.erase('x') == 0 && v0.erase('e') == 1);
 
-
-	assert(*v0.erase(v0.begin()) == 'b' && v0.size() == 5);
-
-//	assert(*v0.erase(v0.begin(), ++v0.begin()) == 'c' && v0.size() == 4);
-//	assert(v0.erase('x') == 0 && v0.erase('e') == 1);
-//
 //	v0.clear();
+//	assert(v0.empty());
+//	v0.swap(v1);
+//	assert(!v0.empty() && v1.empty());
+//	swap(v0, v1);
+//	assert(v0.empty() && !v1.empty());
+//	assert(v1 == v1 && v0 < v1);
+//	assert(v0 != v1 && v1 > v0);
+//	assert(v0 <= v1 && v1 >= v0);
 
 	cout << GREEN"SUCCESS" << NORM << endl;
 
