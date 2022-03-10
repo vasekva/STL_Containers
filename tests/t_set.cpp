@@ -1,4 +1,3 @@
-
 #include <assert.h>
 #include <iostream>
 #include <vector>
@@ -92,11 +91,10 @@ void test_set()
 	ft::pair<Mycont::const_iterator, Mycont::const_iterator> pcc = v4.equal_range('a');
 	assert(*pcc.first == 'a' && *pcc.second == 'b');
 
-	cout << GREEN"SUCCESS" << NORM << endl;
-
 }
 
 int main()
 {
 	test_set();
+	cout << GREEN << "SUCCESS" << NORM << endl;
 }
