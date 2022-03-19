@@ -139,9 +139,7 @@ namespace ft
 				}
 				else if (X.size() <= size())
 				{
-					Clear();
-
-					pointer Q = ItCopy(X.begin(), X.end(), First);
+					pointer Q = ft::copy(X.begin(), X.end(), First);
 
 					Destroy(Q, Last);
 					Last = First + X.size();
@@ -254,7 +252,7 @@ namespace ft
 			reference			back() { return(*(end() - 1)); }
 			const_reference		back() const { return(*(end() - 1)); }
 
-			void 				push_back(const T& X) { insert(end(), X); }
+			void 				push_back(const T &X) { insert(end(), X); }
 			void 				pop_back() { erase(end() -1); }
 
 			template <class It>
@@ -276,7 +274,7 @@ namespace ft
 				insert(begin(), F, L);
 			}
 
-			void assign(size_type N, const T& X)
+			void assign(size_type N, const T &X)
 			{
 				T Tx = X;
 
@@ -284,7 +282,7 @@ namespace ft
 				insert(begin(), N, Tx);
 			}
 
-			iterator insert(iterator P, const T& X)
+			iterator insert(iterator P, const T &X)
 			{
 				size_type Off;
 				if (size() == 0)
@@ -295,7 +293,7 @@ namespace ft
 				return (begin() + Off);
 			}
 
-			void insert(iterator P, size_type count, const T& X)
+			void insert(iterator P, size_type count, const T &X)
 			{
 				T Tx = X;
 				size_type N = capacity();
@@ -311,7 +309,8 @@ namespace ft
 					if ((max_size() - N / 2) < N)
 						N = 0;
 					else
-						N = N + N / 2;
+						N = N + N;
+//						N = N + N / 2;
 					if (N < size() + count)
 						N = size() + count;
 
@@ -387,28 +386,29 @@ namespace ft
 			template <class It>
 			void Insert(iterator P, It F, It L, forward_iterator_tag)
 			{
-				size_type M = 0;
+				size_type distance = 0;
 
-				ft::Distance(F, L, M);
-				size_type N = capacity();
+				ft::Distance(F, L, distance);
+				size_type capacity_v = capacity();
 
-				if (M == 0)
+				if (distance == 0)
 					;
-				else if (max_size() - size() < M)
+				else if (max_size() - size() < distance)
 				{
 					Xlen();
 				}
-				else if (N < size() + M)
+				else if (capacity_v < size() + distance)
 				{
-					if ((max_size() - N / 2) < N)
-						N = 0;
+					if ((max_size() - capacity_v) < capacity_v)
+						capacity_v = 0;
 					else
-						N = N + N / 2;
+						capacity_v = capacity_v + capacity_v;
+						//N = N + N / 2;
 
-					if (N < size() + M)
-						N = size() + M;
+					if (capacity_v < size() + distance)
+						capacity_v = size() + distance;
 
-					pointer S = _base::Alval.allocate(N, (void *) 0);
+					pointer S = _base::Alval.allocate(capacity_v, nullptr);
 					pointer Q;
 					try
 					{
@@ -419,7 +419,7 @@ namespace ft
 					catch (...)
 					{
 						Destroy(S, Q);
-						_base::Alval.deallocate(S, N);
+						_base::Alval.deallocate(S, capacity_v);
 						throw ;
 					}
 					if (First != 0)
@@ -427,13 +427,13 @@ namespace ft
 						Destroy(First, Last);
 						_base::Alval.deallocate(First, End - First);
 					}
-					End = S + N;
-					Last = S + size() + M;
+					End = S + capacity_v;
+					Last = S + size() + distance;
 					First = S;
 				}
-				else if ((size_type)(end() - P) < M)
+				else if ((size_type)(end() - P) < distance)
 				{
-					ItCopy(P, end(), P.base() + M);
+					ItCopy(P, end(), P.base() + distance);
 					It Mid = F;
 					ft::advance(Mid, end() - P);
 
@@ -443,17 +443,17 @@ namespace ft
 					}
 					catch (...)
 					{
-						Destroy(P.base() + M, Last + M);
+						Destroy(P.base() + distance, Last + distance);
 						throw;
 					}
-					Last += M;
+					Last += distance;
 					ft::copy(F, Mid, P);
 				}
-				else if (0 < M)
+				else if (0 < distance)
 				{
 					iterator Oend = end();
-					Last = ItCopy(Oend - M, Oend, Last);
-					ft::copy_backward(P, Oend - M, Oend);
+					Last = ItCopy(Oend - distance, Oend, Last);
+					ft::copy_backward(P, Oend - distance, Oend);
 					ft::copy(F, L, P);
 				}
 			}
@@ -486,8 +486,6 @@ namespace ft
 			{
 				if (_base::Alval == X.Alval)
 				{
-					//TODO
-					// ДОДЕЛАТЬ! - Fanzil'
 					ft::swap(First, X.First);
 					ft::swap(Last, X.Last);
 					ft::swap(End, X.End);
