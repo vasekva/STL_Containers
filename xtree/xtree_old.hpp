@@ -456,8 +456,10 @@ namespace ft
 			template <class It>
 			void insert(It F, It L)
 			{
+				std::cout << "wtd4 start" << std::endl;
 				for (; F != L; ++F)
 					insert(*F);
+				std::cout << "wtd4 end" << std::endl;
 			}
 
 			iterator erase(iterator P)

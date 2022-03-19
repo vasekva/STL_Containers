@@ -175,7 +175,6 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Charref Tree<Tree_traits>::Isnil(Nodeptr P)
 	{
-		// returns Genptr Node.Left
 		return ((Charref)(*P).Isnil);
 	}
 
@@ -189,21 +188,18 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodepref Tree<Tree_traits>::Left(Nodeptr P)
 	{
-		// returns Genptr Node.Left
 		return ((Nodepref)(*P).Left);
 	}
 
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodepref Tree<Tree_traits>::Right(Nodeptr P)
 	{
-		// returns Genptr Node.Left
 		return ((Nodepref)(*P).Right);
 	}
 
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodepref Tree<Tree_traits>::Parent(Nodeptr P)
 	{
-		// returns Genptr Node.Left
 		return ((Nodepref)(*P).Parent);
 	}
 

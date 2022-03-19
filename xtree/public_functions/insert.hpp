@@ -11,30 +11,29 @@ namespace ft
 		Nodeptr X = Root();
 		Nodeptr Y = Head;
 		bool AddLeft = true;
+
 		while (!Isnil(X))
 		{
 			Y = X;
 			AddLeft = Tree_traits::comp(Tree_traits::GetKey(V), Key(X));
 			X = AddLeft ? Left(X) : Right(X);
 		}
-		if (Tree_traits::Multi)
-			return (PairIterBool(Insert(AddLeft, Y, V), true));
+		iterator P = iterator(Y);
+		if (!AddLeft)
+			;
+		else if (P == begin())
+			return (PairIterBool(Insert(true, Y, V), true));
 		else
+			--P;
+
+		if (Tree_traits::comp(Key(P.Mynode()), Tree_traits::GetKey(V)))
 		{
-			iterator P = iterator(Y); //  TODO: <-- there's an error!!!!
-			if (!AddLeft)
-				;
-			else if (P == begin())
-			{
-				return (PairIterBool(Insert(true, Y, V), true));
-			}
-			else
-				--P;
-			if (Tree_traits::comp(Key(P.Mynode()), Tree_traits::GetKey(V)))
-				return (PairIterBool(Insert(AddLeft, Y, V), true));
-			else
-				return (PairIterBool(P, false));
+			PairIterBool a(Insert(AddLeft, Y, V), true);
+			return (a);
 		}
+		else
+			return (PairIterBool(P, false));
+
 	}
 
 	template <class Tree_traits>
@@ -55,7 +54,6 @@ namespace ft
 		else
 		{
 			iterator Pb = P;
-			//TODO: might be error! comp(Key((--Pb) - Mynode()
 			if (Tree_traits::comp(Key((--Pb).Mynode()),
 					 Tree_traits::GetKey(V)) && Tree_traits::comp(Tree_traits::GetKey(V), Key(P.Mynode())))
 			{

@@ -254,6 +254,7 @@ namespace ft
 			class const_iterator : public Bidit<value_type, Dift, Ctptr, const_reference>
 			{
 				public:
+
 					typedef Bidit<value_type, Dift, Ctptr, const_reference> MyBase;
 					typedef typename MyBase::iterator_category	iterator_category;
 					typedef typename MyBase::value_type			value_type;
@@ -309,9 +310,9 @@ namespace ft
 
 			typedef ft::reverse_iterator<iterator>			reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
-			typedef pair<iterator, bool>					PairIterBool;
-			typedef pair<iterator, iterator>				PairIterIter;
-			typedef pair<const_iterator, const_iterator>	PairConstIter;
+			typedef ft::pair<iterator, bool>					PairIterBool;
+			typedef ft::pair<iterator, iterator>				PairIterIter;
+			typedef ft::pair<const_iterator, const_iterator>	PairConstIter;
 
 		/**
 		=================================

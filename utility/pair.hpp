@@ -11,12 +11,11 @@ namespace ft
         
         T first;
         U second;
-        
+
         pair() : first(), second() {}
 
-        pair(const T &X, const U &Y)
-			: first(X), second(Y) {}
-        
+        pair(const T &X, const U &Y) : first(X), second(Y) {}
+
         template<class V, class W>
         pair(const pair<V, W> &pr)
 			: first(pr.first), second(pr.second) {}
@@ -41,7 +40,7 @@ namespace ft
 	template <class T, class U>
 	bool  operator==(const pair<T, U> &X, const pair<T, U> &Y)
     {
-	    return X.first == Y.first && X.second == Y.second;
+		return X.first == Y.first && X.second == Y.second;
 	}
 
 	template <class T, class U>

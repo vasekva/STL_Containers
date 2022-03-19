@@ -9,7 +9,6 @@
 //#include "../STL/iterator/iterator.hpp"
 typedef char *PtrIt;
 
-// Тестирование основынх свойств
 void takes_ran_tag_stl()
 {
 	std::random_access_iterator_tag *ran_tag_s	= (std::random_access_iterator_tag *)0;
@@ -103,19 +102,19 @@ void takes_ran_tag_ft()
 }
 
 typedef ft::reverse_iterator<PtrIt> RevIt;
+
 class MyrevIt : public RevIt
 {
-public:
-	MyrevIt (RevIt::iterator_type p) : RevIt(p)
-	{
+	public:
+		MyrevIt (RevIt::iterator_type p) : RevIt(p)
+		{
 
-	}
+		}
 
-	RevIt::iterator_type get_current() const 
-	{
-		return (current);
-	};
-
+		RevIt::iterator_type get_current() const
+		{
+			return (current);
+		};
 };
 
 void test_revit_ft()
