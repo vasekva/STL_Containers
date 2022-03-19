@@ -17,12 +17,12 @@ namespace ft
 
 			}
 
-			//typedef typename A::template
-			//   rebind<T>::other Alty;
-			//Alty Alval;
+			typedef typename A::template
+			   rebind<T>::other Alty;
+			Alty Alval;
 
-			typedef std::allocator <T> allocator_type;
-			allocator_type Alval;
+//			typedef std::allocator<T> allocator_type;
+//			allocator_type Alval;
 
 			/*  Use function :
 			**  Alval.allocate / Alval.deallocate
@@ -195,50 +195,19 @@ namespace ft
 				return (End - First);
 			}
 
-			iterator begin()
-			{
-				return (iterator(First));
-			}
+			iterator				begin() { return (iterator(First)); }
+			const_iterator			begin() const { return (const_iterator(First)); }
 
-			const_iterator begin() const
-			{
-				return (const_iterator(First));
-			}
+			iterator				end() { return (iterator(Last)); }
+			const_iterator			end() const { return (const_iterator(Last)); }
 
-			iterator end()
-			{
-				return (iterator(Last));
-			}
+			reverse_iterator		rbegin() { return (reverse_iterator(end())); }
+			const_reverse_iterator	rbegin() const { return (const_reverse_iterator(end())); }
 
-			const_iterator end() const
-			{
-				return (const_iterator(Last));
-			}
+			reverse_iterator		rend() { return (reverse_iterator(begin())); }
+			const_reverse_iterator	rend() const { return (const_reverse_iterator(begin())); }
 
-			reverse_iterator rbegin()
-			{
-				return (reverse_iterator(end()));
-			}
-
-			const_reverse_iterator rbegin() const
-			{
-				return (const_reverse_iterator(end()));
-			}
-
-			reverse_iterator rend()
-			{
-				return (reverse_iterator(begin()));
-			}
-
-			const_reverse_iterator rend() const
-			{
-				return (const_reverse_iterator(begin()));
-			}
-
-			void resize(size_type N)
-			{
-				resize(N, T());
-			}
+			void resize(size_type N) { resize(N, T()); }
 
 			void resize(size_type N, T X)
 			{
@@ -255,20 +224,9 @@ namespace ft
 				return (Last - First);
 			}
 
-			size_type max_size() const
-			{
-				return (_base::Alval.max_size());
-			}
-
-			bool empty() const
-			{
-				return (size() == 0);
-			}
-
-			allocator_type get_allocator() const
-			{
-				return (_base::Alval);
-			}
+			size_type		max_size() const { return (_base::Alval.max_size()); }
+			bool			empty() const { return (size() == 0); }
+			allocator_type	get_allocator() const { return (_base::Alval); }
 
 			const_reference at(size_type N) const
 			{
@@ -284,45 +242,20 @@ namespace ft
 				return (*(begin() + N));
 			}
 
-			const_reference operator[](size_type N) const
-			{
-				return (*(begin() + N));
-			}
+			const_reference		operator[](size_type N) const { return (*(begin() + N)); }
+			reference			operator[](size_type N) { return (*(begin() + N)); }
 
-			reference operator[](size_type N)
-			{
-				return (*(begin() + N));
-			}
+			reference			front() { return(*begin()); }
+			const_reference		front() const { return(*begin()); }
 
-			reference front()
-			{
-				return(*begin());
-			}
+			pointer 			data() { return First; };
+			const_pointer		data() const { return First; };
 
-			const_reference front() const
-			{
-				return(*begin());
-			}
+			reference			back() { return(*(end() - 1)); }
+			const_reference		back() const { return(*(end() - 1)); }
 
-			reference back()
-			{
-				return(*(end() - 1));
-			}
-
-			const_reference back() const
-			{
-				return(*(end() - 1));
-			}
-
-			void push_back(const T& X)
-			{
-				insert(end(), X);
-			}
-
-			void pop_back()
-			{
-				erase(end() -1);
-			}
+			void 				push_back(const T& X) { insert(end(), X); }
+			void 				pop_back() { erase(end() -1); }
 
 			template <class It>
 			void assign(It F, It L)
@@ -362,32 +295,33 @@ namespace ft
 				return (begin() + Off);
 			}
 
-			void insert(iterator P, size_type M, const T& X)
+			void insert(iterator P, size_type count, const T& X)
 			{
 				T Tx = X;
 				size_type N = capacity();
 
-				if (M == 0)
+				if (count == 0)
 					;
-				else if (max_size() - size() < M)
+				else if (max_size() - size() < count)
 				{
 					Xlen();
 				}
-				else if (N < size() + M)
+				else if (N < size() + count)
 				{
 					if ((max_size() - N / 2) < N)
 						N = 0;
 					else
 						N = N + N / 2;
-					if (N < size() + M)
-						N = size() + M;
+					if (N < size() + count)
+						N = size() + count;
 
-					pointer S = _base::Alval.allocate(N, (void *) 0);
+					//TODO: has been changed from (void *)0 to ...
+					pointer S = _base::Alval.allocate(N);
 					pointer Q;
 					try
 					{
 						Q = ItCopy(begin(), P, S);
-						Q = Call_construct(Q, M, Tx);
+						Q = Call_construct(Q, count, Tx);
 						ItCopy(P, end(), Q);
 					}
 					catch (...)
@@ -402,37 +336,37 @@ namespace ft
 						_base::Alval.deallocate(First, End - First);
 					}
 					End = S + N;
-					Last = S + size() + M;
+					Last = S + size() + count;
 					First = S;
 				}
-				else if ((size_type)(end() - P) < M)
+				else if ((size_type)(end() - P) < count)
 				{
-					ItCopy(P, end(), P.base() + M);
+					ItCopy(P, end(), P.base() + count);
 					try
 					{
-						Call_construct(Last, M - (end() - P), Tx);
+						Call_construct(Last, count - (end() - P), Tx);
 					}
 					catch (...)
 					{
-						Destroy(P.base() + M, Last + M);
+						Destroy(P.base() + count, Last + count);
 						throw;
 					}
-					Last += M;
-					ft::fill(P, end() - M, Tx);
+					Last += count;
+					ft::fill(P, end() - count, Tx);
 				}
 				else
 				{
 					iterator Oend = end();
-					Last = ItCopy(Oend - M, Oend, Last);
-					ft::copy_backward(P, Oend - M, Oend);
-					ft::fill(P, P + M, Tx);
+					Last = ItCopy(Oend - count, Oend, Last);
+					ft::copy_backward(P, Oend - count, Oend);
+					ft::fill(P, P + count, Tx);
 				}
 			}
 
 			template <class It>
 			void insert(iterator Position, It First, It Last)
 			{
-				Insert(Position, First, Last, Iter_cat(First));
+				Insert(Position, First, Last, ft::Iter_cat(First));
 			}
 
 			template <class It>
@@ -501,7 +435,7 @@ namespace ft
 				{
 					ItCopy(P, end(), P.base() + M);
 					It Mid = F;
-					advance(Mid, end() - P);
+					ft::advance(Mid, end() - P);
 
 					try
 					{
@@ -513,14 +447,14 @@ namespace ft
 						throw;
 					}
 					Last += M;
-					copy(F, Mid, P);
+					ft::copy(F, Mid, P);
 				}
 				else if (0 < M)
 				{
 					iterator Oend = end();
 					Last = ItCopy(Oend - M, Oend, Last);
 					ft::copy_backward(P, Oend - M, Oend);
-					copy(F, L, P);
+					ft::copy(F, L, P);
 				}
 			}
 
@@ -572,7 +506,8 @@ namespace ft
 					return (false);
 				else
 				{
-					First = _base::Alval.allocate(N, (void *)0);
+					//TODO:: has been changed from (N, nullptr) to...
+					First = _base::Alval.allocate(N);
 					Last = First;
 					End = First + N;
 					return (true);
