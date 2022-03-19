@@ -17,4 +17,4 @@ namespace ft
 	typedef long int ptrdiff_t;
 }
 
-#endif 
+#endif

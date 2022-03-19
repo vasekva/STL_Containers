@@ -296,7 +296,7 @@ namespace ft
 			void insert(iterator P, size_type count, const T &X)
 			{
 				T Tx = X;
-				size_type N = capacity();
+				size_type capacity_v = capacity();
 
 				if (count == 0)
 					;
@@ -304,18 +304,18 @@ namespace ft
 				{
 					Xlen();
 				}
-				else if (N < size() + count)
+				else if (capacity_v < size() + count)
 				{
-					if ((max_size() - N / 2) < N)
-						N = 0;
+					if ((max_size() - capacity_v) < capacity_v)
+						capacity_v = 0;
 					else
-						N = N + N;
+						capacity_v = capacity_v + capacity_v;
 //						N = N + N / 2;
-					if (N < size() + count)
-						N = size() + count;
+					if (capacity_v < size() + count)
+						capacity_v = size() + count;
 
 					//TODO: has been changed from (void *)0 to ...
-					pointer S = _base::Alval.allocate(N);
+					pointer S = _base::Alval.allocate(capacity_v);
 					pointer Q;
 					try
 					{
@@ -326,7 +326,7 @@ namespace ft
 					catch (...)
 					{
 						Destroy(S, Q);
-						_base::Alval.deallocate(S, N);
+						_base::Alval.deallocate(S, capacity_v);
 						throw ;
 					}
 					if (First != 0)
@@ -334,7 +334,7 @@ namespace ft
 						Destroy(First, Last);
 						_base::Alval.deallocate(First, End - First);
 					}
-					End = S + N;
+					End = S + capacity_v;
 					Last = S + size() + count;
 					First = S;
 				}

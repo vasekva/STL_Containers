@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <iostream>
 
-#include "../utility/colors.hpp"
+#include "../colors.hpp"
 
 void test_vector()
 {

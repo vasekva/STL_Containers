@@ -12,7 +12,9 @@ namespace ft
 		typedef typename It::value_type 		value_type;
 		typedef typename It::difference_type 	difference_type;
 		typedef typename It::pointer 			pointer;
+//		typedef typename It::const_pointer 		const_pointer;
 		typedef typename It::reference 			reference;
+//		typedef typename It::const_reference	const_reference;
 	};
 
 	template<class T>
@@ -22,7 +24,10 @@ namespace ft
 		typedef T 							value_type;
 		typedef ptrdiff_t 					difference_type;
 		typedef T 							*pointer;
+		typedef const T						*const_pointer;
 		typedef T                           &reference;
+		typedef const T                     &const_reference;
+
 	};
 
 	template<class T>
@@ -32,7 +37,9 @@ namespace ft
 		typedef T 							value_type;
 		typedef ptrdiff_t 					difference_type;
 		typedef T 							*pointer;
+		typedef const T						*const_pointer;
 		typedef T                           &reference;
+		typedef const T                     &const_reference;
 	};
 }
 

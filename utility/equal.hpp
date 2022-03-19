@@ -1,6 +1,8 @@
 #ifndef FT_EQUAL
 # define FT_EQUAL
 
+#include "../algorithm/mismatch.hpp"
+
 namespace ft
 {
 	template <class InIt1, class InIt2> inline
