@@ -7,7 +7,7 @@
 
 #include "../iterators/iterator.hpp"
 #include "../utility/pair.hpp"
-#include "utility/lexicographical_compare.hpp"
+#include "../utility/lexicographical_compare.hpp"
 
 //TODO: implement Biderectional iterator
 

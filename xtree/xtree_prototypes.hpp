@@ -1,7 +1,7 @@
 #ifndef COLLECTIONS_XTREE_PROTOTYPES_HPP
 #define COLLECTIONS_XTREE_PROTOTYPES_HPP
 
-#include "utility/lexicographical_compare.hpp"
+#include "../utility/lexicographical_compare.hpp"
 #include "../utility/pair.hpp"
 #include "../iterators/iterator.hpp"
 #include "../algorithm/algorithm.hpp"
