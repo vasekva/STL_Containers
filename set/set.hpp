@@ -35,7 +35,7 @@ namespace ft
 	};
 
 	template <class K,
-		class Pr = std::less<K>,
+		class Pr = ft::less<K>,
 		class A = std::allocator<K> >
 	class set : public Tree<Tset_traits<K, Pr, A, false> >
 	{

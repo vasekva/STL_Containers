@@ -5,6 +5,7 @@
 #include "../set/set.hpp"
 #include "../iterators/iterator.hpp"
 #include "colors.hpp"
+#include "utility/utility.hpp"
 
 
 using namespace std;
@@ -12,7 +13,7 @@ using namespace std;
 void test_set()
 {
 	typedef allocator<char> Myal;
-	typedef less<char> Mypred;
+	typedef ft::less<char> Mypred;
 	typedef ft::set<char, Mypred, Myal> Mycont;
 	char ch, str1[] = "abc", str2[] = "def";
 

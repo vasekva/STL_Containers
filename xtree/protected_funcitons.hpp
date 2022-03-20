@@ -153,7 +153,7 @@ namespace ft
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::Nodeptr Tree<Tree_traits>::Buynode(Nodeptr Parg, char Carg)
 	{
-		Nodeptr S = this->Alnod.allocate(1, (void *)0);
+		Nodeptr S = this->Alnod.allocate(1);
 		// TODO: second construct parameters were equal 0
 		this->Alptr.construct(&Left(S), nullptr);
 		this->Alptr.construct(&Right(S), nullptr);

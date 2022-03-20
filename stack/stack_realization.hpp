@@ -53,7 +53,6 @@ namespace ft
 		container.pop_back();
 	}
 
-	//TODO:: is this correct??
 	template <class Type, class Container>
 	void stack<Type, Container>::swap(stack<Type, Container> &another_one)
 	{

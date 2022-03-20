@@ -8,5 +8,6 @@ typedef long int ptrdiff_t;
 # include "is_integral.hpp"
 # include "lexicographical_compare.hpp"
 # include "equal.hpp"
+# include "less.hpp"
 
 #endif 

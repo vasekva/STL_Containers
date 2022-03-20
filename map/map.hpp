@@ -66,7 +66,7 @@ namespace ft
 			Pr comp;
 	};
 
-	template <class K, class T, class Pr = std::less<K>,
+	template <class K, class T, class Pr = ft::less<K>,
 		class A = std::allocator<ft::pair<const K, T> > >
 	class map
 		: public Tree<Tmap_traits<K, T, Pr, A, false> >
