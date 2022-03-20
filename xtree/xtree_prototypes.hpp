@@ -9,15 +9,6 @@
 namespace ft
 {
 
-//	template <class tree_traits>
-//	class iterator_pointers;
-
-//	template <class tree_traits>
-//	class iterator_tree;
-
-//	template <class tree_traits>
-//	class const_iterator_tree;
-
 /**
 =================================
 ==   TEMPLATE CLASS Tree_nod   ==
@@ -181,8 +172,6 @@ namespace ft
 			=================================
 			*/
 
-//			class iterator_tree;
-//			friend class iterator_tree;
 			class iterator;
 			friend class iterator;
 			class iterator : public Bidit<value_type, Dift, Tptr, Reft>
@@ -202,7 +191,6 @@ namespace ft
 					iterator	&operator--() { Dec(); return (*this); }
 					iterator	operator--(int) { iterator tmp = *this; --*this; return (tmp); }
 					iterator	operator++(int) { iterator tmp = *this; ++*this; return (tmp); }
-//					iterator	operator*(int) { iterator tmp = *this; ++*this; return (tmp); }
 					bool		operator==(const iterator X) const { return (Ptr == X.Ptr); }
 					bool		operator!=(const iterator X) const { return (!(*this == X)); }
 					void Dec()
@@ -247,8 +235,6 @@ namespace ft
 			==    Class Const_Iterator     ==
 			=================================
 			*/
-//			class const_iterator_tree;
-//			friend class const_iterator_tree;
 			class const_iterator;
 			friend class const_iterator;
 			class const_iterator : public Bidit<value_type, Dift, Ctptr, const_reference>
@@ -442,15 +428,9 @@ namespace ft
 	}
 }
 
-//#include "iterator_pointers.hpp"
-//#include "iterator_tree.hpp"
-//#include "const_iterator_tree.hpp"
-
 #include "xtree_constructors.hpp"
 #include "protected_funcitons.hpp"
 #include "public_functions.hpp"
 #include "xtree_element_access.hpp"
-
-//#include "xtree_constructors.hpp"
 
 #endif
