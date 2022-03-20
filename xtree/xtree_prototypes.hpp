@@ -403,10 +403,12 @@ namespace ft
 //		return (!(X == Y));
 //	}
 
+	//TODO: past version:
+	// ft::lexicographical_compare(X.begin(), X.end(), Y.begin(), Y.end(), X.value_comp());
 	template <class Tr> inline
 	bool operator<(const Tree<Tr> &X, const Tree<Tr> &Y)
 	{
-		return (ft::lexicographical_compare(X.begin(), X.end(), Y.begin(), Y.end(), X.value_comp()));
+		return (ft::lexicographical_compare(X.begin(), X.end(), Y.begin(), Y.end()));
 	}
 
 	template <class Tr> inline
