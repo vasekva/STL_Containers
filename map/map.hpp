@@ -138,6 +138,21 @@ namespace ft
 					this->insert(*F);
 			}
 
+			mapped_type &at(const key_type &Kv)
+			{
+				iterator P = this->find(Kv);
+
+				if (P == this->end())
+					throw std::out_of_range("key not found");
+				else
+					return ((*P).second);
+			}
+
+			mapped_type &at(const key_type &Kv) const
+			{
+				return static_cast<const mapped_type>(at(Kv));
+			}
+
 			mapped_type &operator[](const key_type &Kv)
 			{
 				iterator P = this->insert(value_type(Kv, mapped_type())).first;

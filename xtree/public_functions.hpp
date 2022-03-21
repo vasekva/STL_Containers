@@ -77,7 +77,6 @@ namespace ft
 		return (P == end() || Tree_traits::comp(Kv, Key(P.Mynode())) ? end() : P);
 	}
 
-	//TODO: count always return 0
 	template <class Tree_traits>
 	typename Tree<Tree_traits>::size_type Tree<Tree_traits>::count(const key_type &Kv) const
 	{

@@ -128,9 +128,6 @@ namespace ft
 //			typedef const_iterator_tree<Tree_traits>		const_iterator;
 
 
-
-
-
 			explicit Tree(const key_compare &Parg, const allocator_type &Al);
 			Tree(const value_type *First, const value_type *Last,
 				 const key_compare &Parg, const allocator_type &Al);
@@ -188,9 +185,15 @@ namespace ft
 					typedef typename MyBase::reference			reference;
 					iterator() : Ptr(0) {}
 					iterator(Nodeptr P) : Ptr(P) {}
+					iterator &operator=(const iterator &obj)
+					{
+						if (this != &obj)
+							Ptr = obj.Ptr;
+						return (*this);
+					}
 					reference	operator*() const { return (Value(Ptr)); }
-					Tptr		operator->() const { return (&**this); }
-					// TODO: check output value
+//					Tptr		operator->() const { return (&**this); }
+					pointer		operator->() { return (&**this); }
 					iterator	&operator++() { Inc(); return (*this); }
 					iterator	&operator--() { Dec(); return (*this); }
 					iterator	operator--(int) { iterator tmp = *this; --*this; return (tmp); }
@@ -253,6 +256,12 @@ namespace ft
 					const_iterator(Nodeptr P) : Ptr(P) {}
 					const_iterator(const typename Tree<Tree_traits>::iterator X)
 							: Ptr(X.Mynode()) {}
+					const_iterator &operator=(const const_iterator &obj)
+					{
+						if (this != &obj)
+							Ptr = obj.Ptr;
+						return (*this);
+					}
 					const_reference operator*() const { return (Value(Ptr)); }
 					Ctptr operator->() const { return (&**this); }
 					const_iterator &operator++() { Inc(); return (*this); }

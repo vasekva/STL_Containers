@@ -3,28 +3,35 @@
 
 namespace ft
 {
-    template <class T, class U>
+    template <class T1, class T2>
     struct pair
     {
-        typedef T first_type;
-        typedef U second_type;
-        
-        T first;
-        U second;
+        typedef T1 first_type;
+        typedef T2 second_type;
+
+		T1 first;
+		T2 second;
 
         pair() : first(), second() {}
 
-        pair(const T &X, const U &Y) : first(X), second(Y) {}
+        pair(const T1 &X, const T2 &Y) : first(X), second(Y) {}
 
         template<class V, class W>
         pair(const pair<V, W> &pr)
 			: first(pr.first), second(pr.second) {}
 
-        void swap(pair<T, U> &pr)
+		pair& operator=(pair const& p)
+		{
+			first = p.first;
+			second = p.second;
+			return (*this);
+		}
+
+        void swap(pair<T1, T2> &pr)
         {
-            pair<T, U> tmp(pr.first, pr.second);
-            pr.first = this->first ;
-            pr.second = this->second ;
+            pair<T1, T2> tmp(pr.first, pr.second);
+            pr.first = this->first;
+            pr.second = this->second;
             this->first = tmp.first;
             this->second = tmp.second;
         }
