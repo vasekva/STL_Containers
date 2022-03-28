@@ -1,4 +1,4 @@
-#include "ft_containers-unit-test/sources/system/system_methods.ipp"
+#include "../system/system_methods.ipp"
 #include "__service.ipp"
 
 template <class T>
@@ -26,16 +26,12 @@ std::vector<int> lower_bound_test(std::set<T> st) {
         it = st.lower_bound(i);
         v.push_back(*it);
     }
-//    for (int i = 11; i < 70; i += 10) {
-//        it = st2.lower_bound(i);
-//        v.push_back(*it);
-//    }
     std::set<int> st3;
-    for (int i = 0; i < 50 * _ratio; ++i) {
+    for (int i = 0; i < 50; ++i) {
         st3.insert(i);
     }
     g_start1 = timer();
-    st3.lower_bound(49 * _ratio);
+    st3.lower_bound(49);
     g_end1 = timer();
     return v;
 }
@@ -65,16 +61,12 @@ std::vector<int> lower_bound_test(_set<T> st) {
         it = st.lower_bound(i);
         v.push_back(*it);
     }
-//    for (int i = 11; i < 70; i += 10) {
-//        it = st2.lower_bound(i);
-//        v.push_back(*it);
-//    }
     _set<int> st3;
-    for (int i = 0; i < 50 * _ratio; ++i) {
+    for (int i = 0; i < 50; ++i) {
         st3.insert(i);
     }
     g_start2 = timer();
-    st3.lower_bound(49 * _ratio);
+    st3.lower_bound(49);
     g_end2 = timer();
     return v;
 }

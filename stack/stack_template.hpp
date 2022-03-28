@@ -1,8 +1,6 @@
-#ifndef COLLECTIONS_STACK_TEMPLATE_HPP
-#define COLLECTIONS_STACK_TEMPLATE_HPP
+#ifndef FT_STACK_TEMPLATE_HPP
+#define FT_STACK_TEMPLATE_HPP
 
-
-//#include "deque"
 #include "../vector/vector.hpp"
 
 namespace ft
@@ -18,7 +16,6 @@ namespace ft
 			typedef typename Container::reference		reference;
 			typedef typename Container::const_reference	const_reference;
 
-			//TODO: make a destructor
 			stack();
 			explicit stack(const container_type &cont);
 			~stack();

@@ -1,5 +1,5 @@
-#ifndef FT_ITERATOR_TAG
-# define FT_ITERATOR_TAG
+#ifndef FT_ITERATOR_TAG_HPP
+# define FT_ITERATOR_TAG_HPP
 
 namespace ft
 {

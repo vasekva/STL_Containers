@@ -1,5 +1,5 @@
-#ifndef FT_FILL
-# define FT_FILL
+#ifndef FT_FILL_HPP
+# define FT_FILL_HPP
 
 namespace ft
 {

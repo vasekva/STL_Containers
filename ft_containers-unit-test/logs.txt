@@ -1,1 +1,7 @@
-
+In file included from ../stack_tests/push().cpp:2:
+../stack_tests/__service.ipp:3:15: warning: extra tokens at end of #include directive [-Wextra-tokens]
+#include STACK"stack_realization.hpp""stack_realization.hpp""stack.hpp""stack.hpp""stack.hpp"
+              ^
+              //
+1 warning generated.
+ted.

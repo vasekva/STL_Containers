@@ -1,6 +1,6 @@
 #pragma once
-#include "ft_containers-unit-test/sources/system/lib.hpp"
-#include MAP"map.hpp"
+#include "../system/lib.hpp"
+#include MAP"map.hpp""map.hpp""map.hpp""map.hpp"
 
 template <class T, class V, class C>
 void fillMap(std::map<T, V, C> &mp) {

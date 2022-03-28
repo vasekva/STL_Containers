@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include "../map/map.hpp"
+#include "../colors.hpp"
 #include <thread>
 #include <functional>
 
@@ -61,7 +62,7 @@ void Count_time(std::function<void()> f, std::function<void()> f1, const std::st
 	t_point start;
 	t_point end;
 
-	std::cout <<"Test " << msg << std::endl;
+	std::cout << YELLOW << "Test " << msg << NORM << std::endl;
 	start = hrc::now();
 	f();
 	end = hrc::now();

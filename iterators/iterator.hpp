@@ -1,5 +1,5 @@
-#ifndef FT_ITERATOR
-# define FT_ITERATOR
+#ifndef FT_ITERATOR_HPP
+# define FT_ITERATOR_HPP
 
 # include "iterator_tag.hpp"
 # include "iterator_category.hpp"

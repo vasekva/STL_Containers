@@ -1,18 +1,18 @@
 #pragma once
 #include "lib.hpp"
-#include "ft_containers-unit-test/sources/system/bass24/bass.h"
+#include "./bass24/bass.h"
 
 #define _CXX "/usr/bin/clang++"
 #define _CXX_FLAGS "-Wall -Wextra -Werror"
 #define _EXEC_NAME "test1"
 #define _ALARM_TIMEOUT 20
-#define _VECTOR_TEST_NUM 37
+#define _VECTOR_TEST_NUM 35
 #define _STACK_TEST_NUM 12
 #define _UTILITIES_TEST_NUM 5
 #define _SET_TEST_NUM 29
 #define _MAP_TEST_NUM 32
-#define _TOTAL_TEST_NUM 86
-#define _TOTAL_TEST_NUM_BONUS 115
+#define _TOTAL_TEST_NUM 84
+#define _TOTAL_TEST_NUM_BONUS 113
 #define _TASK_NUM 4
 #define _TASK_NUM_BONUS 1
 

@@ -1,5 +1,5 @@
-#ifndef FT_MIN
-# define FT_MIN
+#ifndef FT_MIN_HPP
+# define FT_MIN_HPP
 
 namespace ft
 {

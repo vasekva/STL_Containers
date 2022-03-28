@@ -6,7 +6,7 @@
 /*		if you haven't yet some container		  */
 /**************************************************/
 #define VECTOR			"/Users/jberegon/CLionProjects/Collections/Collections/vector/vector.hpp"
-#define STACK			"/Users/jberegon/CLionProjects/Collections/Collections/stack/stack_realization.hpp"
+#define STACK			"/Users/jberegon/CLionProjects/Collections/Collections/stack/stack.hpp"
 #define MAP			  	"/Users/jberegon/CLionProjects/Collections/Collections/map/map.hpp"
 #define SET			  	"/Users/jberegon/CLionProjects/Collections/Collections/set/set.hpp"
 #define UTILITIES		"/Users/jberegon/CLionProjects/Collections/Collections/utility/utility.hpp"

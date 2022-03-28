@@ -1,5 +1,5 @@
-#include "ft_containers-unit-test/sources/system/system_methods.ipp"
-#include UTILITIES"utility.hpp"
+#include "../system/system_methods.ipp"
+#include UTILITIES"utility.hpp""utility.hpp""utility.hpp""utility.hpp"
 
 bool lexicographical_test() {
 	std::vector<int> result, result2;

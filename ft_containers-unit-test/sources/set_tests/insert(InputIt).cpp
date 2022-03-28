@@ -1,10 +1,10 @@
-#include "ft_containers-unit-test/sources/system/system_methods.ipp"
+#include "../system/system_methods.ipp"
 #include "__service.ipp"
 
 template <class T>
 std::vector<int> insert_test_2(std::set<T> st) {
     std::vector<int> v;
-    for (int i = 0; i < 50 * _ratio; ++i)
+    for (int i = 0; i < 5000; ++i)
         st.insert(i);
     std::set<int> st2;
     g_start1 = timer();
@@ -20,7 +20,7 @@ std::vector<int> insert_test_2(std::set<T> st) {
 template <class T>
 std::vector<int> insert_test_2(_set<T> st) {
     std::vector<int> v;
-    for (int i = 0; i < 50 * _ratio; ++i)
+    for (int i = 0; i < 5000 ; ++i)
         st.insert(i);
     _set<int> st2;
     g_start2 = timer();

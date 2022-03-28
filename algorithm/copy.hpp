@@ -1,5 +1,5 @@
-#ifndef FT_COPY
-# define FT_COPY
+#ifndef FT_COPY_HPP
+# define FT_COPY_HPP
 
 namespace ft
 {

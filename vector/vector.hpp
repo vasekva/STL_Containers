@@ -20,16 +20,6 @@ namespace ft
 			typedef typename A::template
 			   rebind<T>::other Alty;
 			Alty Alval;
-
-//			typedef std::allocator<T> allocator_type;
-//			allocator_type Alval;
-
-			/*  Use function :
-			**  Alval.allocate / Alval.deallocate
-			**  Alval.destroy
-			**  Alval.max_size
-			*/
-
 	};
 
 	template<class T, class Alloc = std::allocator <T> >
@@ -40,13 +30,13 @@ namespace ft
 			typedef Vector_val<T, Alloc>	_base;
 			typedef vector<T, Alloc>		Myt;
 
-			typedef typename Alloc::const_reference		const_reference;
-			typedef typename Alloc::reference			reference;
-			typedef typename Alloc::const_pointer		const_pointer;
-			typedef typename Alloc::pointer				pointer;
-			typedef typename Alloc::difference_type		difference_type;
-			typedef typename Alloc::size_type			size_type;
 			typedef typename Alloc::value_type			value_type;
+			typedef typename Alloc::size_type			size_type;
+			typedef typename Alloc::difference_type		difference_type;
+			typedef typename Alloc::reference			reference;
+			typedef typename Alloc::const_reference		const_reference;
+			typedef typename Alloc::pointer				pointer;
+			typedef typename Alloc::const_pointer		const_pointer;
 
 			typedef pointer			Tptr;
 			typedef const_pointer	Ctptr;
@@ -108,6 +98,7 @@ namespace ft
 			{
 				Construct(First, Last, ft::Iter_cat(First));
 			}
+
 
 			template <class It>
 			void Construct(It F, It L, Int_iterator_tag)

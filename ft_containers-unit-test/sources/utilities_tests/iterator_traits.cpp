@@ -1,6 +1,6 @@
-#include "ft_containers-unit-test/sources/system/system_methods.ipp"
-#include UTILITIES"utility.hpp"
-#include VECTOR"vector.hpp"
+#include "../system/system_methods.ipp"
+#include UTILITIES"utility.hpp""utility.hpp""utility.hpp""utility.hpp"
+#include VECTOR"vector.hpp""vector.hpp""vector.hpp""vector.hpp"
 
 bool iterator_traits_test() {
 	std::vector<string> res;

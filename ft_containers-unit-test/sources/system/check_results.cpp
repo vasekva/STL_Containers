@@ -1,5 +1,5 @@
 #include "lib.hpp"
-#include "ft_containers-unit-test/sources/system/bass24/banner.hpp"
+#include "bass24/banner.hpp"
 #include "engine.ipp"
 
 void showAchievment(std::string filename, int output_udelay, void (banner)(int), int snd_delay) {

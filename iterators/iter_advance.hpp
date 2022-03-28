@@ -1,5 +1,5 @@
-#ifndef FT_ITER_ADVANCE
-# define FT_ITER_ADVANCE
+#ifndef FT_ITER_ADVANCE_HPP
+# define FT_ITER_ADVANCE_HPP
 
 namespace ft
 {

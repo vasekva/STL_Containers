@@ -1,6 +1,6 @@
 #pragma once
-#include "ft_containers-unit-test/sources/system/lib.hpp"
-#include STACK"stack_realization.hpp"
+#include "../system/lib.hpp"
+#include STACK"stack_realization.hpp""stack_realization.hpp""stack.hpp""stack.hpp""stack.hpp"
 
 class StackBoolTest {
 public:

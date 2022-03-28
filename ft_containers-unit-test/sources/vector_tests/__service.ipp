@@ -1,6 +1,6 @@
 #pragma once
-#include "ft_containers-unit-test/sources/system/lib.hpp"
-#include VECTOR"vector.hpp"
+#include "../system/lib.hpp"
+#include VECTOR"vector.hpp""vector.hpp""vector.hpp""vector.hpp"
 
 template <class T>
 int run_vector_unit_test(std::string test_name, std::vector<int> (func1)(std::vector<T>), std::vector<int> (func2)(_vector<T>)) {

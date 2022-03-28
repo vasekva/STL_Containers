@@ -1,6 +1,6 @@
 #pragma once
-#include "ft_containers-unit-test/sources/system/lib.hpp"
-#include SET"set.hpp"
+#include "../system/lib.hpp"
+#include SET"set.hpp""set.hpp"
 
 template <class T, class C>
 void fillSet(std::set<T, C> &mp) {

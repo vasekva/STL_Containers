@@ -1,11 +1,8 @@
 #include <assert.h>
 #include <iostream>
 #include <vector>
-//#include "../set.hpp"
 #include "../map/map.hpp"
-#include "../iterators/iterator.hpp"
-#include "colors.hpp"
-#include "utility/utility.hpp"
+#include "../colors.hpp"
 
 using namespace std;
 
@@ -24,20 +21,6 @@ void test_map()
 		new (&xarr[i])Myval('a' + i, 1 + i);
 		new (&xarr2[i])Myval('d' + i, 4 + i);
 	}
-
-	Mycont::key_type		*p_key = (char *)0;
-	Mycont::mapped_type		*p_mapped = (int *)0;
-	Mycont::key_compare		*p_kcomp = (Mypred *)0;
-	Mycont::allocator_type  *p_alloc = (Myal *)0;
-	Mycont::value_type      *p_val = (Myval *)0;
-	Mycont::value_compare	*p_vcomp = 0;
-	Mycont::pointer			p_ptr = (Myval *)0;
-	Mycont::const_pointer	p_cptr = (const Myval *)0;
-	Mycont::reference		p_ref = x;
-	Mycont::const_reference p_cref = (const Myval &)x;
-	Mycont::size_type       *p_size = (size_t *)0;
-	Mycont::difference_type *p_diff = (ptrdiff_t *)0;
-
 	Mycont v0;
 	Myal al = v0.get_allocator();
 	Mypred pred;
@@ -121,11 +104,10 @@ void test_map()
 	ft::pair<Mycont::const_iterator, Mycont::const_iterator> pcc
 		= v4.equal_range('a');
 	assert((*pcc.first).first == 'a' && (*pcc.second).first == 'b');
-
 }
 
 int main()
 {
 	test_map();
-	cout << GREEN << "SUCCESS" << NORM << endl;
+	cout << GREEN << "SUCCESS testing <map>" << NORM << endl;
 }

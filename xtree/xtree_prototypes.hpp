@@ -1,5 +1,5 @@
-#ifndef COLLECTIONS_XTREE_PROTOTYPES_HPP
-#define COLLECTIONS_XTREE_PROTOTYPES_HPP
+#ifndef XTREE_PROTOTYPES_HPP
+#define XTREE_PROTOTYPES_HPP
 
 #include "../utility/lexicographical_compare.hpp"
 #include "../utility/pair.hpp"
@@ -22,10 +22,6 @@ namespace ft
 			typedef typename Tree_traits::key_compare		key_compare;
 			typedef typename Tree_traits::value_type		value_type;
 
-
-			//TODO: past version
-			// typedef typename allocator_type::template
-			// rebind<void>::other::pointer Genptr;
 			typedef typename allocator_type::template
 			rebind<Tree_traits>::other::pointer Genptr;
 
@@ -108,8 +104,6 @@ namespace ft
 		public:
 			typedef typename allocator_type::template
 				rebind<Node>::other::pointer					Nodeptr;
-			typedef typename allocator_type::template
-				rebind<Node>::other::const_pointer				NodeptrConst;
 		private:
 			typedef typename allocator_type::template
 				rebind<value_type>::other::const_pointer		Ctptr;
@@ -124,9 +118,6 @@ namespace ft
 			typedef Reft	reference;
 			typedef typename allocator_type::template
 			rebind<value_type>::other::const_reference		const_reference;
-//			typedef iterator_tree<Tree_traits>				iterator;
-//			typedef const_iterator_tree<Tree_traits>		const_iterator;
-
 
 			explicit Tree(const key_compare &Parg, const allocator_type &Al);
 			Tree(const value_type *First, const value_type *Last,
@@ -147,8 +138,6 @@ namespace ft
 
 	protected:
 			enum NodeColors {Red, Black};
-//			typedef typename Tree_node<Tr>::Genptr	Genptr;
-//			enum Redbl { Red, Black };
 			typedef typename allocator_type::template
 				rebind<Nodeptr>::other::reference			Nodepref;
 			typedef typename allocator_type::template
@@ -186,7 +175,6 @@ namespace ft
 					typedef typename MyBase::reference			reference;
 					iterator() : Ptr(0) {}
 					iterator(Nodeptr P) : Ptr(P) {}
-					iterator_type	base() const { return Ptr; }
 					iterator &operator=(const iterator &obj)
 					{
 						if (this != &obj)
@@ -194,7 +182,6 @@ namespace ft
 						return (*this);
 					}
 					reference	operator*() const { return (Value(Ptr)); }
-//					Tptr		operator->() const { return (&**this); }
 					pointer		operator->() { return (&**this); }
 					iterator	&operator++() { Inc(); return (*this); }
 					iterator	&operator--() { Dec(); return (*this); }
@@ -333,8 +320,6 @@ namespace ft
 			template <class It>
 			void			insert(It F, It L);
 
-			//TODO: move the implementation to a separate file
-//			Myt &operator=(const Myt &X);
 			iterator begin();
 			const_iterator begin() const;
 			iterator end();
@@ -402,26 +387,12 @@ namespace ft
 		return (X.size() == Y.size() && equal(X.begin(), X.end(), Y.begin()));
 	}
 
-//	template <class It1, class It2>
-//	bool operator==(const It1 &X, const It2 &Y)
-//	{
-//		return (X.Ptr == Y.Ptr);
-//	}
-
 	template <class Tr> inline
 	bool operator!=(const Tree<Tr> &X, const Tree<Tr> &Y)
 	{
 		return (!(X == Y));
 	}
 
-//	template <class It1, class It2>
-//	bool operator!=(const It1& X, const It2& Y)
-//	{
-//		return (!(X == Y));
-//	}
-
-	//TODO: past version:
-	// ft::lexicographical_compare(X.begin(), X.end(), Y.begin(), Y.end(), X.value_comp());
 	template <class Tr> inline
 	bool operator<(const Tree<Tr> &X, const Tree<Tr> &Y)
 	{

@@ -1,5 +1,5 @@
-#ifndef FT_SWAP
-# define FT_SWAP
+#ifndef FT_SWAP_HPP
+# define FT_SWAP_HPP
 
 namespace ft
 {

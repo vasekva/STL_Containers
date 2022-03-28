@@ -1,5 +1,5 @@
-#ifndef FT_MAX
-# define FT_MAX
+#ifndef FT_MAX_HPP
+# define FT_MAX_HPP
 
 namespace ft
 {

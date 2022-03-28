@@ -2,10 +2,10 @@
 #include <iostream>
 #include <deque>
 #include <list>
-#include <stack>
 #include <vector>
 
-#include "../stack/stack_realization.hpp"
+#include "../stack/stack.hpp"
+#include "../colors.hpp"
 
 using namespace std;
 
@@ -19,10 +19,6 @@ int main()
 	typedef ft::stack<char, Myimpl> Mycont;
 	typedef ft::stack<char, Myimpl2> Mycont2;
 	typedef ft::stack<char, Myimpl3> Mycont3;
-
-	Mycont::container_type *p_cont = (Myimpl *)0;
-	Mycont::value_type *p_val = (char *)0;
-	Mycont::size_type *p_size = (size_t *)0;
 
 	Mycont v0(Myimpl(3, 'x')), v0a;
 	Mycont2 v1;
@@ -64,6 +60,6 @@ int main()
 	assert(stack.empty());
 	std::cout << std::endl;
 
-	cout << "SUCCESS testing <stack>" << endl;
+	cout << GREEN << "SUCCESS testing <stack>" << NORM << endl;
 	return (0);
 }

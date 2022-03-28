@@ -1,4 +1,4 @@
-CXX			= clang++
+CXX			= c++
 
 CXXFLAGS 	=  -g -Wall -Wextra -Werror -std=c++98
 
@@ -11,52 +11,48 @@ F_GREEN		= \033[32m
 F_CYAN		= \033[36m
 F_BLUE		= \033[34m 
 
-all: start_iterator start_memory start_vector start_stack start_set
-
-ITERATOR 	= iterator_test
-
-$(ITERATOR):
-	$(CXX) $(CXXFLAGS) ./tests/t_iterator.cpp -o $(ITERATOR)
-
-start_iterator: $(ITERATOR)
-			@./$(ITERATOR) || echo " "
-			@rm $(ITERATOR) || echo " "
-
-MEMORY 		= memory_test
-
-$(MEMORY):
-	$(CXX) $(CXXFLAGS) ./tests/t_memory.cpp -o $(MEMORY)
-
-start_memory: $(MEMORY)
-			@./$(MEMORY) || echo " "
-			@rm $(MEMORY) || echo " "
+all: start_vector start_stack start_set start_map
 
 VECTOR		= vector_test
 
 $(VECTOR):
-	$(CXX) $(CXXFLAGS) ./tests/t_vector.cpp -o $(VECTOR)
+	@($(CXX) $(CXXFLAGS) ./tests/t_vector.cpp -o $(VECTOR))
 
 start_vector: $(VECTOR)
-			@./$(VECTOR) || echo " "
-			@rm $(VECTOR) || echo " "
+			@./$(VECTOR)
+			@rm $(VECTOR)
+			@rm -rf ./vector_test.dSYM
 
 STACK		= stack_test
 
 $(STACK):
-	$(CXX) $(CXXFLAGS) ./tests/t_stack.cpp -o $(STACK)
+	@($(CXX) $(CXXFLAGS) ./tests/t_stack.cpp -o $(STACK))
 
 start_stack: $(STACK)
-			@./$(STACK) || echo " "
-			@rm $(STACK) || echo " "
-
+			@./$(STACK)
+			@rm $(STACK)
+			@rm -rf ./stack_test.dSYM
 
 SET		= set_test
 
-CPP_SET = ./tests/test_set.cpp
+CPP_SET = ./tests/t_set.cpp
 
 $(SET):
-	$(CXX) $(CXXFLAGS) $(CPP_SET) -o $(SET)
+	@($(CXX) $(CXXFLAGS) $(CPP_SET) -o $(SET))
 
 start_set: $(SET)
-			@./$(SET) || echo " "
-			@rm $(SET) || echo " "
+			@./$(SET)
+			@rm $(SET)
+			@rm -rf ./set_test.dSYM
+
+MAP		= map_test
+
+CPP_MAP = ./tests/t_map.cpp
+
+$(MAP):
+	@($(CXX) $(CXXFLAGS) $(CPP_MAP) -o $(MAP))
+
+start_map: $(MAP)
+			@./$(MAP)
+			@rm $(MAP)
+			@rm -rf ./map_test.dSYM

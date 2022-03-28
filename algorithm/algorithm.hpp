@@ -1,5 +1,5 @@
-#ifndef FT_ALGORITHM
-# define FT_ALGORITHM
+#ifndef FT_ALGORITHM_HPP
+# define FT_ALGORITHM_HPP
 
 # include "../utility/utility.hpp"
 

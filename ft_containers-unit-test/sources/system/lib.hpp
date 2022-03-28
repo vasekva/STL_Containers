@@ -25,7 +25,7 @@ int _allocator_used = 0;
 #include <csignal>
 #include <unistd.h>
 #include <fcntl.h>
-#include "ft_containers-unit-test/config.hpp"
+#include "../../config.hpp"
 #include "output.hpp"
 #include "Alloc.hpp"
 

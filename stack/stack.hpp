@@ -1,5 +1,5 @@
-#ifndef COLLECTIONS_STACK_REALIZATION_HPP
-#define COLLECTIONS_STACK_REALIZATION_HPP
+#ifndef FT_STACK_REALIZATION_HPP
+#define FT_STACK_REALIZATION_HPP
 
 #include "stack_template.hpp"
 
@@ -15,7 +15,9 @@ namespace ft
 
 	template <class Type_stack, class Container_stack>
 	stack<Type_stack, Container_stack>::~stack()
-	{}
+	{
+		container.clear();
+	}
 
 	template <class Type, class Container>
 	bool stack<Type, Container>::empty() const

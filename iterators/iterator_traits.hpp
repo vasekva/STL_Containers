@@ -1,5 +1,5 @@
-#ifndef FT_ITERATOR_TRAITS
-# define FT_ITERATOR_TRAITS
+#ifndef FT_ITERATOR_TRAITS_HPP
+# define FT_ITERATOR_TRAITS_HPP
 
 #include "iterator.hpp"
 
@@ -12,9 +12,7 @@ namespace ft
 		typedef typename It::value_type 		value_type;
 		typedef typename It::difference_type 	difference_type;
 		typedef typename It::pointer 			pointer;
-//		typedef typename It::const_pointer 		const_pointer;
 		typedef typename It::reference 			reference;
-//		typedef typename It::const_reference	const_reference;
 	};
 
 	template<class T>

@@ -1,5 +1,5 @@
-#ifndef SET_CONSTRUCTORS
-#define SET_CONSTRUCTORS
+#ifndef FT_SET_CONSTRUCTORS_HPP
+#define FT_SET_CONSTRUCTORS_HPP
 
 #include "set.hpp"
 
@@ -11,6 +11,12 @@ namespace ft
 		: Mybase(key_compare(), allocator_type())
 	{
 
+	}
+
+	template <class K, class Pr, class A>
+	set<K, Pr, A>::~set()
+	{
+		Mybase::clear();
 	}
 
 	template <class K, class Pr, class A>

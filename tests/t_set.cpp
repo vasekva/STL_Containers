@@ -15,19 +15,7 @@ void test_set()
 	typedef allocator<char> Myal;
 	typedef ft::less<char> Mypred;
 	typedef ft::set<char, Mypred, Myal> Mycont;
-	char ch, str1[] = "abc", str2[] = "def";
-
-	Mycont::key_type        *p_key = (char *)0;
-	Mycont::key_compare     *p_komp = (Mypred *)0;
-	Mycont::value_type      *p_val = (char *)0;
-	Mycont::value_compare   *p_vcomp = (Mypred *)0;
-	Mycont::allocator_type  *p_alloc = (Myal *)0;
-	Mycont::pointer         p_ptr = (char *)0;
-	Mycont::const_pointer   p_cptr = (const char *)0;
-	Mycont::reference       p_ref = ch;
-	Mycont::const_reference p_cref = (const char &)ch;
-	Mycont::size_type       *p_size = (size_t *)0;
-	Mycont::difference_type *p_diff = (ptrdiff_t *)0;
+	char str1[] = "abc", str2[] = "def";
 
     Mycont v0;
     Myal al = v0.get_allocator();
@@ -97,5 +85,5 @@ void test_set()
 int main()
 {
 	test_set();
-	cout << GREEN << "SUCCESS" << NORM << endl;
+	cout << GREEN << "SUCCESS testing <set>" << NORM << endl;
 }

@@ -1,5 +1,5 @@
-#ifndef FT_MISMATCH
-# define FT_MISMATCH
+#ifndef FT_MISMATCH_HPP
+# define FT_MISMATCH_HPP
 
 # include "algorithm.hpp"
 

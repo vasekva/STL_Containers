@@ -1,5 +1,5 @@
-#ifndef FT_ITER_DISTANCE
-#define FT_ITER_DISTANCE
+#ifndef FT_ITER_DISTANCE_HPP
+#define FT_ITER_DISTANCE_HPP
 
 namespace ft
 {

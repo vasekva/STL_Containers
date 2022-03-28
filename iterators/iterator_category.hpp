@@ -1,5 +1,5 @@
-#ifndef FT_ITERATOR_CATEGORY
-# define FT_ITERATOR_CATEGORY
+#ifndef FT_ITERATOR_CATEGORY_HPP
+# define FT_ITERATOR_CATEGORY_HPP
 
 #include "iterator.hpp"
 
@@ -16,32 +16,6 @@ namespace ft
 		typedef _Tp				iterator_type;
     };
 
-//	template <class T>
-//	struct iterator
-//	{
-//		typedef T											iterator_type;
-//		typedef typename	iterator_traits<iterator_type>::value_type					value_type;
-//		typedef typename	iterator_traits<iterator_type>::pointer					pointer;
-//		typedef typename	iterator_traits<iterator_type>::const_pointer					const_pointer;
-//		typedef typename	iterator_traits<iterator_type>::reference					reference;
-//		typedef typename	iterator_traits<iterator_type>::const_reference				const_reference;
-//		typedef typename	iterator_traits<iterator_type>::difference_type				difference_type;
-//		typedef typename 	iterator_traits<iterator_type>::iterator_category				iterator_category;
-//	};
-
-//	template <typename T>
-//	struct iterator_traits<T *>
-//	{
-//		public:
-//			typedef T											value_type;
-//			typedef T*											pointer;
-//			typedef const T*										const_pointer;
-//			typedef T&											reference;
-//			typedef const T&										const_reference;
-//			typedef ptrdiff_t										difference_type;
-//			typedef std::random_access_iterator_tag								iterator_category;
-//	};
-//
 	template  <class T, class D, class Pt, class Rt>
 	struct Bidit: public iterator<bidirectional_iterator_tag, T, D, Pt, Rt>
 	{

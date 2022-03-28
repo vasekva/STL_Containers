@@ -1,5 +1,5 @@
-#ifndef COLLECTIONS_MAP_HPP
-#define COLLECTIONS_MAP_HPP
+#ifndef FT_MAP_HPP
+#define FT_MAP_HPP
 
 #include <stdlib.h>
 #include <memory>
@@ -46,9 +46,9 @@ namespace ft
 					{
 						return(comp(X.first, Y.first));
 					}
-				protected:
 					value_compare(key_compare Pred)
 							: comp(Pred) {}
+				protected:
 					key_compare comp;
 			};
 
@@ -56,13 +56,6 @@ namespace ft
 			{
 				return (V.first);
 			}
-//			struct Kfn
-//			{
-//				const K	&operator()(const value_type &X) const
-//				{
-//					return(X.first);
-//				}
-//			};
 			Pr comp;
 	};
 
@@ -98,7 +91,11 @@ namespace ft
 			map()
 					: Mybase(key_compare(), allocator_type())
 			{
+			}
 
+			~map()
+			{
+				Mybase::clear();
 			}
 
 			explicit map(const key_compare &Pred)
