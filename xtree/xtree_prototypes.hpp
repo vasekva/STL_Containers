@@ -185,6 +185,8 @@ namespace ft
 					typedef typename MyBase::reference			reference;
 					iterator() : Ptr(0) {}
 					iterator(Nodeptr P) : Ptr(P) {}
+					//       ft::Tree<ft::Tmap_traits<int, int, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> >, false> >::iterator
+					// const ft::Tree<ft::Tmap_traits<int, int, ft::less<int>,          std::__1::allocator<ft::pair<const int, int> >, false> >::iterator
 					iterator &operator=(const iterator &obj)
 					{
 						if (this != &obj)
@@ -256,12 +258,12 @@ namespace ft
 					const_iterator(Nodeptr P) : Ptr(P) {}
 					const_iterator(const typename Tree<Tree_traits>::iterator X)
 							: Ptr(X.Mynode()) {}
-					const_iterator &operator=(const const_iterator &obj)
-					{
-						if (this != &obj)
-							Ptr = obj.Ptr;
-						return (*this);
-					}
+//					const_iterator &operator=(const const_iterator &obj)
+//					{
+//						if (this != &obj)
+//							Ptr = obj.Ptr;
+//						return (*this);
+//					}
 					const_reference operator*() const { return (Value(Ptr)); }
 					Ctptr operator->() const { return (&**this); }
 					const_iterator &operator++() { Inc(); return (*this); }

@@ -49,6 +49,15 @@ namespace ft
 	{
 		N += L - F;
 	}
+
+	template <class InIt, class D> inline
+	void Distance_Tree(InIt F, InIt L, D &N)
+	{
+		for (; F != L; ++F)
+		{
+			++N;
+		}
+	}
 }
 
 #endif

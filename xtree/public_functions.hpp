@@ -82,7 +82,7 @@ namespace ft
 	{
 		PairConstIter Ans = equal_range(Kv);
 		size_type N = 0;
-		Distance(Ans.first, Ans.second, N);
+		Distance_Tree(Ans.first, Ans.second, N);
 		return (N);
 	}
 

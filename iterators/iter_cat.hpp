@@ -12,19 +12,19 @@ namespace ft
 		return (x);
 	}
 
-//	template <class T> inline
-//	ft::random_access_iterator_tag Iter_cat(const T)
-//	{
-//		ft::random_access_iterator_tag x;
-//		return (x);
-//	}
-
 	template <class T> inline
-	ft::random_access_iterator_tag Iter_cat(const T *)
+	ft::random_access_iterator_tag Iter_cat(const T)
 	{
 		ft::random_access_iterator_tag x;
 		return (x);
 	}
+
+//	template <class T> inline
+//	ft::random_access_iterator_tag Iter_cat(const T *)
+//	{
+//		ft::random_access_iterator_tag x;
+//		return (x);
+//	}
 
 	inline ft::Int_iterator_tag Iter_cat(bool)
 	{

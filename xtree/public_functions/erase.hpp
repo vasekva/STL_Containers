@@ -177,7 +177,7 @@ namespace ft
 	{
 		PairIterIter P = equal_range(X);
 		size_type N = 0;
-		Distance(P.first, P.second, N);
+		Distance_Tree(P.first, P.second, N);
 		erase(P.first, P.second);
 		return (N);
 	}
