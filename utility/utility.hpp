@@ -9,5 +9,6 @@ typedef long int ptrdiff_t;
 # include "lexicographical_compare.hpp"
 # include "equal.hpp"
 # include "less.hpp"
+# include "../iterators/iterator.hpp"
 
 #endif 

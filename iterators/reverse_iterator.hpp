@@ -14,11 +14,13 @@ namespace ft
 		typename ft::iterator_traits<RanIt>::reference>
 	{
 		public:
-			typedef reverse_iterator<RanIt> 							Myt;
-			typedef typename iterator_traits<RanIt>::difference_type	D;
-			typedef typename iterator_traits<RanIt>::pointer			Ptr;
-			typedef typename iterator_traits<RanIt>::reference			Ref;
-			typedef RanIt 												iterator_type;
+			typedef reverse_iterator<RanIt> 												Myt;
+			typedef RanIt                                                					iterator_type;
+			typedef typename iterator_traits<RanIt>::difference_type     					difference_type;
+			typedef typename iterator_traits<RanIt>::value_type         					value_type;
+			typedef typename iterator_traits<RanIt>::reference           					reference;
+			typedef typename iterator_traits<RanIt>::pointer             					pointer;
+			typedef typename iterator_traits<RanIt>::iterator_category  					iterator_category;
 
 			reverse_iterator() {};
 			explicit reverse_iterator(RanIt x) : current(x) {}
@@ -28,24 +30,30 @@ namespace ft
 				: current(x.base()) {}
 
 			RanIt base() const { return (current); }
-			Ref operator*() const { RanIt tmp = current; return (*--tmp); }
-			Ptr operator->() const { return (&**this); }
+			reverse_iterator	&operator=(const reverse_iterator &obj)
+			{
+				if (this != &obj)
+					this->current = obj.current;
+				return (*this);
+			}
+			reference operator*() const { RanIt tmp = current; return (*--tmp); }
+			pointer operator->() const { return (&**this); }
 			Myt &operator++() { --current; return (*this); }
 			Myt &operator--() { ++current; return (*this); }
-			Myt operator++(int) { Myt Tmp = *this; --current; return (Tmp); }
-			Myt operator--(int) { Myt Tmp = *this; ++current; return (Tmp); }
-			Myt operator+(D N) const { return (Myt(current - N)); }
-			Myt operator-(D N) const { return (Myt(current + N)); }
-			Myt &operator+=(D N) { current -= N; return (*this); }
-			Myt &operator-=(D N) { current += N; return (*this); }
-			Ref operator[](D N) const { return (*(*this + N)); }
+			Myt operator++(int) { Myt tmp = *this; --current; return (tmp); }
+			Myt operator--(int) { Myt tmp = *this; ++current; return (tmp); }
+			Myt operator+(difference_type N) const { return (Myt(current - N)); }
+			Myt operator-(difference_type N) const { return (Myt(current + N)); }
+			Myt &operator+=(difference_type N) { current -= N; return (*this); }
+			Myt &operator-=(difference_type N) { current += N; return (*this); }
+			reference operator[](difference_type N) const { return (*(*this + N)); }
 
 		protected:
 			RanIt current;
 	};
 
 	template <class RanIt, class RanIt1> inline
-	typename reverse_iterator<RanIt>::D operator-(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
+	typename reverse_iterator<RanIt>::difference_type operator-(const reverse_iterator<RanIt> &X, const reverse_iterator<RanIt1> &Y)
 	{
 		return (Y.base() - X.base());
 	}

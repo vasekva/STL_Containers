@@ -181,12 +181,12 @@ namespace ft
 					typedef Bidit<value_type, Dift, Tptr, Reft> MyBase;
 					typedef typename MyBase::iterator_category	iterator_category;
 					typedef typename MyBase::difference_type	difference_type;
+					typedef typename MyBase::iterator_type		iterator_type;
 					typedef typename MyBase::pointer			pointer;
 					typedef typename MyBase::reference			reference;
 					iterator() : Ptr(0) {}
 					iterator(Nodeptr P) : Ptr(P) {}
-					//       ft::Tree<ft::Tmap_traits<int, int, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> >, false> >::iterator
-					// const ft::Tree<ft::Tmap_traits<int, int, ft::less<int>,          std::__1::allocator<ft::pair<const int, int> >, false> >::iterator
+					iterator_type	base() const { return Ptr; }
 					iterator &operator=(const iterator &obj)
 					{
 						if (this != &obj)
@@ -252,18 +252,20 @@ namespace ft
 
 					typedef Bidit<value_type, Dift, Ctptr, const_reference> MyBase;
 					typedef typename MyBase::iterator_category	iterator_category;
+					typedef typename MyBase::iterator_type 		iterator_type;
 					typedef typename MyBase::value_type			value_type;
 					typedef typename MyBase::difference_type	difference_type;
 					const_iterator() : Ptr(0) {}
 					const_iterator(Nodeptr P) : Ptr(P) {}
 					const_iterator(const typename Tree<Tree_traits>::iterator X)
 							: Ptr(X.Mynode()) {}
-//					const_iterator &operator=(const const_iterator &obj)
-//					{
-//						if (this != &obj)
-//							Ptr = obj.Ptr;
-//						return (*this);
-//					}
+					iterator_type	base() const { return Ptr; }
+					const_iterator &operator=(const const_iterator &obj)
+					{
+						if (this != &obj)
+							Ptr = obj.Ptr;
+						return (*this);
+					}
 					const_reference operator*() const { return (Value(Ptr)); }
 					Ctptr operator->() const { return (&**this); }
 					const_iterator &operator++() { Inc(); return (*this); }

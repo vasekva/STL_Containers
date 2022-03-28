@@ -13,6 +13,7 @@ namespace ft
 		typedef _Distance		difference_type;
       	typedef _Pointer		pointer;
       	typedef _Reference		reference;
+		typedef _Tp				iterator_type;
     };
 
 //	template <class T>

@@ -25,11 +25,15 @@ namespace ft
 			}
 
 			Pt base() const { return (current); }
-
+			random_access_iterator	&operator=(const random_access_iterator &obj)
+			{
+				if (this != &obj)
+					this->current = obj.current;
+				return (*this);
+			}
 			Rt operator*() const { return (*current); }
 			Pt operator->() const { return (&**this); }
 			Rt operator[](D N) const { return (*(*this + N)); }
-
 			Myt &operator++() { ++current; return (*this); }
 			Myt &operator--() { --current; return (*this); }
 			Myt &operator+=(D N) { current += N; return (*this); }

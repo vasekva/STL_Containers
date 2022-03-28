@@ -46,9 +46,9 @@ namespace ft
 					{
 						return(comp(X.first, Y.first));
 					}
+				protected:
 					value_compare(key_compare Pred)
 							: comp(Pred) {}
-				protected:
 					key_compare comp;
 			};
 
@@ -78,7 +78,7 @@ namespace ft
 					Mybase;
 			typedef K	key_type;
 			typedef T	mapped_type;
-			typedef T	referent_type;
+			typedef T	reference_type;
 			typedef Pr	key_compare;
 			typedef typename Mybase::value_compare		value_compare;
 			typedef typename Mybase::allocator_type		allocator_type;
@@ -158,6 +158,8 @@ namespace ft
 				iterator P = this->insert(value_type(Kv, mapped_type())).first;
 				return ((*P).second);
 			}
+
+
 	};
 }
 

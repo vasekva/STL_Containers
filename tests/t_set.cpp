@@ -4,8 +4,8 @@
 //#include "../set.hpp"
 #include "../set/set.hpp"
 #include "../iterators/iterator.hpp"
-#include "colors.hpp"
-#include "utility/utility.hpp"
+#include "../colors.hpp"
+#include "../utility/utility.hpp"
 
 
 using namespace std;
